@@ -25,6 +25,7 @@ public class Robot extends TimedRobot {
 
 	AutoBaseClass mAutoProgram;
 
+	final String skillsOne = "Skill One";
 	final String threeBasicBalls = "3 Basic Balls";
 	final String sixBallRight = "6 Balls Right";
 	final String fiveBallsMiddle = "5 Balls Middle";
@@ -271,6 +272,10 @@ public class Robot extends TimedRobot {
 		mAutoProgram.start();
 
 		switch (autoSelected) {
+		case skillsOne:
+			mAutoProgram = new AutonSkillsOne();
+			mAutoProgram.start();
+			break;
 		case threeBasicBalls:
 			mAutoProgram = new AutonBasic3BallOffLine();
 			mAutoProgram.start(robotPosition);
@@ -306,7 +311,8 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Position", positionChooser);
 
 		autoChooser = new SendableChooser<String>();
-		autoChooser.setDefaultOption(threeBasicBalls, threeBasicBalls);
+		autoChooser.setDefaultOption(skillsOne, skillsOne);
+		autoChooser.addOption(threeBasicBalls, threeBasicBalls);
 		autoChooser.addOption(sixBallRight, sixBallRight);
 		autoChooser.addOption(fiveBallsMiddle, fiveBallsMiddle);
 		autoChooser.addOption(sixBallsLeft, sixBallsLeft);
