@@ -24,7 +24,8 @@ public class Robot extends TimedRobot {
 	KeyMap gamepad;
 
 	AutoBaseClass mAutoProgram;
-
+	final String bluepathAutonSkillstwo = "skill two a";
+	final String atonSkillstwo = "skill two"; 
 	final String skillsOne = "Skill One";
 	final String threeBasicBalls = "3 Basic Balls";
 	final String sixBallRight = "6 Balls Right";
