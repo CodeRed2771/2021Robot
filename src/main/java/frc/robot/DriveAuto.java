@@ -78,7 +78,7 @@ public class DriveAuto {
 
 		if (fieldCentric) {
 			GyroAngle = RobotGyro.getRelativeAngle();
-			strafeAngle = -angle;
+			strafeAngle = angle;
 			strafeAngleOriginal = strafeAngle;
 
 			if (GyroAngle > 0 && GyroAngle < 180) {
@@ -89,7 +89,7 @@ public class DriveAuto {
 			}
 
 		} else {
-			strafeAngle = -angle;
+			strafeAngle = angle;
 			strafeAngleOriginal = strafeAngle;
 		}
 		
