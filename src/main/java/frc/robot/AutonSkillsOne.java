@@ -26,10 +26,8 @@ public class AutonSkillsOne extends AutoBaseClass {
         if (isRunning()) {
             Vision.setTargetForShooting();
             DriveAuto.tick();
-            SmartDashboard.putNumber("3 ball Auto Step", getCurrentStep());
-            SmartDashboard.putBoolean("Vision On Target", Vision.onTarget());
-            SmartDashboard.putBoolean("Shooter At Speed", Shooter.isAtSpeed());
-
+            SmartDashboard.putNumber("Skill One Auto Step", getCurrentStep());
+         
             switch (getCurrentStep()) {
             case 0:
                 DriveAuto.driveInches(24,45, 1);

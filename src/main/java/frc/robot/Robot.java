@@ -13,6 +13,7 @@ import java.math.RoundingMode;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import jdk.dynalink.support.SimpleRelinkableCallSite;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 public class Robot extends TimedRobot {
@@ -25,8 +26,8 @@ public class Robot extends TimedRobot {
 
 	AutoBaseClass mAutoProgram;
 	final String bluepathAutonSkillstwo = "skill two a";
-	final String atonSkillstwo = "skill two"; 
 	final String skillsOne = "Skill One";
+	final String skillsTwo = "Skill Two"; 
 	final String threeBasicBalls = "3 Basic Balls";
 	final String sixBallRight = "6 Balls Right";
 	final String fiveBallsMiddle = "5 Balls Middle";
@@ -277,6 +278,10 @@ public class Robot extends TimedRobot {
 			mAutoProgram = new AutonSkillsOne();
 			mAutoProgram.start();
 			break;
+		case skillsTwo:
+			mAutoProgram = new AutonSkillstwo();
+			mAutoProgram.start();
+			break;		
 		case threeBasicBalls:
 			mAutoProgram = new AutonBasic3BallOffLine();
 			mAutoProgram.start(robotPosition);
@@ -313,6 +318,7 @@ public class Robot extends TimedRobot {
 
 		autoChooser = new SendableChooser<String>();
 		autoChooser.setDefaultOption(skillsOne, skillsOne);
+		autoChooser.addOption(skillsTwo, skillsTwo);
 		autoChooser.addOption(threeBasicBalls, threeBasicBalls);
 		autoChooser.addOption(sixBallRight, sixBallRight);
 		autoChooser.addOption(fiveBallsMiddle, fiveBallsMiddle);

@@ -24,13 +24,11 @@ public class AutonSkillstwo extends AutoBaseClass {
         if (isRunning()) {
             Vision.setTargetForShooting();
             DriveAuto.tick();
-            SmartDashboard.putNumber("3 ball Auto Step", getCurrentStep());
-            SmartDashboard.putBoolean("Vision On Target", Vision.onTarget());
-            SmartDashboard.putBoolean("Shooter At Speed", Shooter.isAtSpeed());
+            SmartDashboard.putNumber("Auto Step", getCurrentStep());
 
             switch (getCurrentStep()) {
             case 0:
-                DriveAuto.driveInches(60,0, 1);
+                DriveAuto.driveInches(30,0, 1);
                 setTimerAndAdvanceStep(2000);
                 break;
             case 1:
@@ -39,34 +37,57 @@ public class AutonSkillstwo extends AutoBaseClass {
                 } 
                 break;
             case 2:
-                DriveAuto.driveInches(60, 45, 1);
+                DriveAuto.driveInches(90, -45, 1);
                 setTimerAndAdvanceStep(2000);
                 break;
             case 3:
-            if (driveCompleted()) {
-                advanceStep();
-            } 
+                if (driveCompleted()) {
+                    advanceStep();
+                } 
                 break;
             case 4:
-            DriveAuto.driveInches(60, -90, 1);
-            setTimerAndAdvanceStep(2000);
+                DriveAuto.driveInches(165, 0, 1);
+                setTimerAndAdvanceStep(3000);
                 break;
             case 5:
-            DriveAuto.driveInches(120, 45, 1);
-            setTimerAndAdvanceStep(2000);
+                if (driveCompleted()) {
+                    advanceStep();
+                }
                 break;
             case 6:
-            if (driveCompleted()) {
-                advanceStep();
-            }
+                DriveAuto.driveInches(60, 45, 1);
+                setTimerAndAdvanceStep(2000);
                 break;
             case 7:
-            stop();
+                if (driveCompleted()) {
+                    advanceStep();
+                }
                 break;
             case 8:
-               
+                DriveAuto.driveInches(48, 0, 1);
+                setTimerAndAdvanceStep(2000);
                 break;
             case 9:
+                if (driveCompleted()) {
+                    advanceStep();
+                }
+                break;
+            case 10:
+                DriveAuto.driveInches(24, -90, 1);
+                setTimerAndAdvanceStep(2000);
+                break;
+            case 11:
+                if (driveCompleted()) {
+                    advanceStep();
+                }
+                break;
+            case 20:
+            stop();
+                break;
+            case 21:
+               
+                break;
+            case 22:
               
                 break;
             }
