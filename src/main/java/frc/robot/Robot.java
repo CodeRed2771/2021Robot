@@ -34,6 +34,7 @@ public class Robot extends TimedRobot {
 	final String sixBallsLeft = "6 Balls Left";
 	final String autoCalibrator = "Auto Calibrator";
 	final String autoAlign = "Auto Align";
+	final String ballPickUp = "Auto Ball Pick Up";
 	private boolean isIntakeUpPosition = true;
 
 	@Override
@@ -305,6 +306,11 @@ public class Robot extends TimedRobot {
 		case autoAlign:
 			mAutoProgram = new AutoAlign();
 			mAutoProgram.start(robotPosition);
+			break;
+		case ballPickUp:
+			mAutoProgram = new AutoBallPickUp();
+			mAutoProgram.start();
+			break;
 		}
 	}
 
@@ -325,6 +331,7 @@ public class Robot extends TimedRobot {
 		autoChooser.addOption(sixBallsLeft, sixBallsLeft);
 		autoChooser.addOption(autoCalibrator, autoCalibrator);
 		autoChooser.addOption(autoAlign, autoAlign);
+		autoChooser.addOption(ballPickUp, ballPickUp);
 		SmartDashboard.putData("Auto Chose:", autoChooser);
 	}
 

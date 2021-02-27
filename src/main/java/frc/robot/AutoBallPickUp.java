@@ -13,13 +13,13 @@ public class AutoBallPickUp extends AutoBaseClass {
     private double angleOffset = 0;
     private static boolean ballCollected = false;
 
-    private static ArrayList<Point> BallLocations = new ArrayList<>();
+    private ArrayList<Point> BallLocations = new ArrayList<>();
 
     public AutoBallPickUp () {
 
     }
 
-    public static boolean ballCollected () {
+    public boolean ballCollected () {
         return ballCollected;
     }
 
@@ -42,10 +42,11 @@ public class AutoBallPickUp extends AutoBaseClass {
             SmartDashboard.putNumber("Auto Step", getCurrentStep());
             switch (getCurrentStep()) {
             case 0:
+                VisionBall.SetUpBallVision();
                 //get ball list
                 ballCollected = false;
                 BallLocations.clear();
-                BallLocations = VisionBall.GetBallLocations();
+                BallLocations = VisionBall.GetBallLocations(); // THIS LINE IS CAUSING ROBOT CODE TO CRASH
                 advanceStep();
                 break;
             case 1:
