@@ -9,7 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class AutonSkillstwo extends AutoBaseClass {
+public class AutoSlalom extends AutoBaseClass {
 
     public void start() {
         super.start();
@@ -28,7 +28,7 @@ public class AutonSkillstwo extends AutoBaseClass {
 
             switch (getCurrentStep()) {
             case 0:
-                DriveAuto.driveInches(30,0, 1);
+                DriveAuto.driveInches(54,90, 1);
                 setTimerAndAdvanceStep(2000);
                 break;
             case 1:
@@ -37,7 +37,7 @@ public class AutonSkillstwo extends AutoBaseClass {
                 } 
                 break;
             case 2:
-                DriveAuto.driveInches(90, -45, 1);
+                DriveAuto.driveInches(54, 0, 1);
                 setTimerAndAdvanceStep(2000);
                 break;
             case 3:
@@ -46,11 +46,12 @@ public class AutonSkillstwo extends AutoBaseClass {
                 } 
                 break;
             case 4:
-                DriveAuto.driveInches(165, 0, 1);
+                DriveAuto.driveInches(85, 90, 1);
                 setTimerAndAdvanceStep(3000);
                 break;
             case 5:
                 if (driveCompleted()) {
+                    setStep(99);
                     advanceStep();
                 }
                 break;

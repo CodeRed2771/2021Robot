@@ -27,7 +27,7 @@ public class Robot extends TimedRobot {
 	AutoBaseClass mAutoProgram;
 	final String bluepathAutonSkillstwo = "skill two a";
 	final String skillsOne = "Skill One";
-	final String skillsTwo = "Skill Two"; 
+	final String AutoSlalom = "Slalom"; 
 	final String threeBasicBalls = "3 Basic Balls";
 	final String sixBallRight = "6 Balls Right";
 	final String fiveBallsMiddle = "5 Balls Middle";
@@ -279,8 +279,8 @@ public class Robot extends TimedRobot {
 			mAutoProgram = new AutonSkillsOne();
 			mAutoProgram.start();
 			break;
-		case skillsTwo:
-			mAutoProgram = new AutonSkillstwo();
+		case AutoSlalom:
+			mAutoProgram = new AutoSlalom();
 			mAutoProgram.start();
 			break;		
 		case threeBasicBalls:
@@ -324,7 +324,7 @@ public class Robot extends TimedRobot {
 
 		autoChooser = new SendableChooser<String>();
 		autoChooser.setDefaultOption(skillsOne, skillsOne);
-		autoChooser.addOption(skillsTwo, skillsTwo);
+		autoChooser.addOption(AutoSlalom, AutoSlalom);
 		autoChooser.addOption(threeBasicBalls, threeBasicBalls);
 		autoChooser.addOption(sixBallRight, sixBallRight);
 		autoChooser.addOption(fiveBallsMiddle, fiveBallsMiddle);
