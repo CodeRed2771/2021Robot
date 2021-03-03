@@ -2,6 +2,7 @@ package frc.robot;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.concurrent.Semaphore;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -15,7 +16,8 @@ import org.opencv.core.Point;
 import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.cameraserver.CameraServer;   
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;   
 
 public class VisionBall
 {
@@ -29,8 +31,8 @@ public class VisionBall
     //Contour Filtering Constants
     private static final int BALL_MIN_WIDTH = 20;
     //Camera Physical Constants
-    private static final float CAMERA_HEIGHT = 6.25f;
-    private static final float CAMERA_TILT = 18.7f; 
+    private static final float CAMERA_HEIGHT = 6.5f;
+    private static final float CAMERA_TILT = 9.5f; 
     private static final int RELATIVE_CENTER_X = 320; //TODO - Get actual center x
     //Ball Physical Constants
     private static final float CENTER_BALL_HEIGHT = 3.5f;
@@ -86,17 +88,23 @@ public class VisionBall
     public static ArrayList<Point> GetBallLocations()
     {
         //Grab and process a frame
+        SmartDashboard.putString("aaaaaaaaaaaaaaaaaaaaaaaaa", "0");
         GrabFrameFromServer();
+        SmartDashboard.putString("aaaaaaaaaaaaaaaaaaaaaaaaa", "1");
         ProcessFrame();
+        SmartDashboard.putString("aaaaaaaaaaaaaaaaaaaaaaaaa", "2");
 
         //Find all the Contours in the frame
         ArrayList<Rect> balls = FindContoursInFrame();
+        SmartDashboard.putString("aaaaaaaaaaaaaaaaaaaaaaaaa", "3");
 
         //Find position of balls in relationship to camera - returned as polar coordinants
         ArrayList<Point> ballLocations = FindPositions(balls);
+        SmartDashboard.putString("aaaaaaaaaaaaaaaaaaaaaaaaa", "4");
 
         //Sort Balls from nearest to furthest
         ballLocations = PrioritizeBalls(ballLocations);
+        SmartDashboard.putString("aaaaaaaaaaaaaaaaaaaaaaaaa", "5");
 
         return ballLocations;
     }
@@ -104,10 +112,13 @@ public class VisionBall
     private static void GrabFrameFromServer()
     {
         mCameraFrameGrabber.grabFrame(mUnprocessedFrame);
+        SmartDashboard.putNumber("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", mUnprocessedFrame.cols());
         //Display raw image
-        mRawImageStream.putFrame(mUnprocessedFrame);
+        mRawImageStream.putFrame(mUnprocessedFrame); // failing at this step
+        SmartDashboard.putString("bbbbbbbbbbbbbbbbbbbbbb", "1");
         //Save copy of raw image so that we can bound balls on it later
         Imgproc.cvtColor(mUnprocessedFrame, mProcessedFrame, Imgproc.COLOR_BGR2RGB);
+        SmartDashboard.putString("bbbbbbbbbbbbbbbbbbbbbb", "2");
     }
 
     private static void ProcessFrame()
