@@ -111,14 +111,17 @@ public class VisionBall
     
     private static void GrabFrameFromServer()
     {
-        mCameraFrameGrabber.grabFrame(mUnprocessedFrame);
-        SmartDashboard.putNumber("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", mUnprocessedFrame.cols());
+        int attemptCount = 0;
+        while (mCameraFrameGrabber.grabFrame(mUnprocessedFrame) == 0 && attemptCount < 10)
+            attemptCount++;    
+        // not grabbing frame
+        SmartDashboard.putNumber("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", mUnprocessedFrame.cols()); 
         //Display raw image
         mRawImageStream.putFrame(mUnprocessedFrame); // failing at this step
-        SmartDashboard.putString("bbbbbbbbbbbbbbbbbbbbbb", "1");
+        SmartDashboard.putString("cccccccccccccccccccccccc", "1");
         //Save copy of raw image so that we can bound balls on it later
         Imgproc.cvtColor(mUnprocessedFrame, mProcessedFrame, Imgproc.COLOR_BGR2RGB);
-        SmartDashboard.putString("bbbbbbbbbbbbbbbbbbbbbb", "2");
+        SmartDashboard.putString("cccccccccccccccccccccccc", "2");
     }
 
     private static void ProcessFrame()
