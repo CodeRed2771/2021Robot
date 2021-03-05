@@ -28,7 +28,7 @@ public class AutoSlalom extends AutoBaseClass {
 
             switch (getCurrentStep()) {
             case 0:
-                DriveAuto.driveInches(54,90, 1);
+                DriveAuto.driveInches( 60, 0, 1);
                 setTimerAndAdvanceStep(2000);
                 break;
             case 1:
@@ -37,7 +37,7 @@ public class AutoSlalom extends AutoBaseClass {
                 } 
                 break;
             case 2:
-                DriveAuto.driveInches(54, 0, 1);
+                DriveAuto.driveInches( 155, 45, 1);
                 setTimerAndAdvanceStep(2000);
                 break;
             case 3:
@@ -46,17 +46,16 @@ public class AutoSlalom extends AutoBaseClass {
                 } 
                 break;
             case 4:
-                DriveAuto.driveInches(85, 90, 1);
+                DriveAuto.driveInches( 155, -90, 1);
                 setTimerAndAdvanceStep(3000);
                 break;
             case 5:
                 if (driveCompleted()) {
-                    setStep(99);
                     advanceStep();
                 }
                 break;
             case 6:
-                DriveAuto.driveInches(60, 45, 1);
+                DriveAuto.driveInches( 30, 45, 1);
                 setTimerAndAdvanceStep(2000);
                 break;
             case 7:
@@ -65,7 +64,7 @@ public class AutoSlalom extends AutoBaseClass {
                 }
                 break;
             case 8:
-                DriveAuto.driveInches(48, 0, 1);
+                DriveAuto.driveInches( 90, 90, 1);
                 setTimerAndAdvanceStep(2000);
                 break;
             case 9:
@@ -74,7 +73,7 @@ public class AutoSlalom extends AutoBaseClass {
                 }
                 break;
             case 10:
-                DriveAuto.driveInches(24, -90, 1);
+                DriveAuto.driveInches( 90, 90, 1);
                 setTimerAndAdvanceStep(2000);
                 break;
             case 11:
@@ -82,14 +81,39 @@ public class AutoSlalom extends AutoBaseClass {
                     advanceStep();
                 }
                 break;
-            case 20:
-            stop();
-                break;
-            case 21:
-               
-                break;
+            case 12:
+            DriveAuto.driveInches( 90, 90, 1);
+            setTimerAndAdvanceStep(2000);
+            break;
+        case 13:
+            if (driveCompleted()) {
+                advanceStep();
+            }
+            break;
+            case 14:
+            DriveAuto.driveInches( 150 , -90, 1);
+            setTimerAndAdvanceStep(2000);
+            break;
+        case 15:
+            if (driveCompleted()) {
+                advanceStep();
+            }
+            break;
+            case 16:
+            DriveAuto.driveInches( 60, 45, 1);
+            setTimerAndAdvanceStep(2000);
+            break;
+        case 17:
+            if (driveCompleted()) {
+                advanceStep();
+            }
+            break;
+            case 18:
+            DriveAuto.driveInches( 30, -45, 1);
+            setTimerAndAdvanceStep(2000);
+            break;
             case 22:
-              
+              stop();
                 break;
             }
         }
