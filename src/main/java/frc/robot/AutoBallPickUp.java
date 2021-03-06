@@ -49,7 +49,7 @@ public class AutoBallPickUp extends AutoBaseClass {
                 advanceStep();
                 break;
             case 1:
-                turnDegrees(BallLocations.get(0).y/2, 0.5);
+                turnDegrees(-BallLocations.get(0).x, 0.5);
                 //calculate strafe distance and direction
                 // double Distance = BallLocations.get(0).y * Math.sin(Math.toRadians(BallLocations.get(0).x));
                 // double Degrees = (Distance < 0) ? -90 : 90;
@@ -65,7 +65,7 @@ public class AutoBallPickUp extends AutoBaseClass {
                 }
                 break;
             case 3:
-                driveInches(-BallLocations.get(0).x, 0, 0.5);
+                driveInches(BallLocations.get(0).y/1, 0, 0.5);
                 setTimerAndAdvanceStep(3000);
                 break;
             case 4:

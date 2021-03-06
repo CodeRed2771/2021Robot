@@ -197,9 +197,10 @@ public class VisionBall
             
             verticalDegreesFromTarget *= (verticalDegreesFromTarget < 0)? -1 : 1;
 
-            distanceFromTarget = (CAMERA_HEIGHT - CENTER_BALL_HEIGHT) / ((float) Math.tan(Math.toRadians(verticalDegreesFromTarget)));
+            distanceFromTarget = ((CAMERA_HEIGHT - CENTER_BALL_HEIGHT) / ((float) Math.tan(Math.toRadians(verticalDegreesFromTarget))));
 
             SmartDashboard.putNumber("INCHES AWAY FROM BALL", distanceFromTarget);
+            SmartDashboard.putNumber("DEGREES OFF OF BALL", degreesFromTarget);
 
             ballPolarCoordinants.add(new Point(degreesFromTarget, distanceFromTarget));
         }
