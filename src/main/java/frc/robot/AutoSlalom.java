@@ -37,7 +37,7 @@ public class AutoSlalom extends AutoBaseClass {
                     } 
                     break;
                 case 2:
-                    DriveAuto.driveInches( 155, 45, 1);
+                   driveInches( 70, 45, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 3:
@@ -46,17 +46,17 @@ public class AutoSlalom extends AutoBaseClass {
                     } 
                     break;
                 case 4:
-                    DriveAuto.driveInches( 155, -90, 1);
-                    setTimerAndAdvanceStep(3000);
-                    break;
+                    driveInches( 120, -45, 1);
+                     setTimerAndAdvanceStep(2000);
+                     break;
                 case 5:
-                    if (driveCompleted()) {
-                        advanceStep();
-                    }
-                    break;
+                     if (driveCompleted()) {
+                         advanceStep();
+                     } 
+                     break;
                 case 6:
-                    DriveAuto.driveInches( 60, 45, 1);
-                    setTimerAndAdvanceStep(2000);
+                    driveInches( 70, -45, 1);
+                    setTimerAndAdvanceStep(3000);
                     break;
                 case 7:
                     if (driveCompleted()) {
@@ -64,7 +64,7 @@ public class AutoSlalom extends AutoBaseClass {
                     }
                     break;
                 case 8:
-                    DriveAuto.driveInches( 90, -90, 1);
+                    driveInches( 60, 45, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 9:
@@ -73,7 +73,7 @@ public class AutoSlalom extends AutoBaseClass {
                     }
                     break;
                 case 10:
-                    DriveAuto.driveInches( 90, -90, 1);
+                    driveInches( 90, -90, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 11:
@@ -82,7 +82,7 @@ public class AutoSlalom extends AutoBaseClass {
                     }
                     break;
                 case 12:
-                    DriveAuto.driveInches( 90, -90, 1);
+                    driveInches( 90, -90, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 13:
@@ -91,7 +91,7 @@ public class AutoSlalom extends AutoBaseClass {
                     }
                     break;
                 case 14:
-                    DriveAuto.driveInches( 150 , 90, 1);
+                    driveInches( 90, -90, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 15:
@@ -100,7 +100,7 @@ public class AutoSlalom extends AutoBaseClass {
                     }
                     break;
                 case 16:
-                    DriveAuto.driveInches( 60, 45, 1);
+                    driveInches( 150 , 90, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 17:
@@ -109,15 +109,24 @@ public class AutoSlalom extends AutoBaseClass {
                     }
                     break;
                 case 18:
-                    DriveAuto.driveInches( 30, -45, 1);
+                    driveInches( 60, 45, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
-                case 22:
+                case 19:
                     if (driveCompleted()) {
                         advanceStep();
                     }
                     break;
-                case 23:
+                case 20:
+                    driveInches( 30, -45, 1);
+                    setTimerAndAdvanceStep(2000);
+                    break;
+                case 21:
+                    if (driveCompleted()) {
+                        advanceStep();
+                    }
+                    break;
+                case 22:
                     stop();
                     break;
             } 
