@@ -46,7 +46,7 @@ public class AutoSlalom extends AutoBaseClass {
                     } 
                     break;
                 case 4:
-                    driveInches( 120, -45, 1);
+                    driveInches( 120, 0, 1);
                      setTimerAndAdvanceStep(2000);
                      break;
                 case 5:
@@ -64,7 +64,7 @@ public class AutoSlalom extends AutoBaseClass {
                     }
                     break;
                 case 8:
-                    driveInches( 60, 45, 1);
+                    driveInches( 60, 0, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 9:
@@ -82,7 +82,7 @@ public class AutoSlalom extends AutoBaseClass {
                     }
                     break;
                 case 12:
-                    driveInches( 90, -90, 1);
+                    driveInches( 90, 180, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 13:
@@ -91,7 +91,7 @@ public class AutoSlalom extends AutoBaseClass {
                     }
                     break;
                 case 14:
-                    driveInches( 90, -90, 1);
+                    driveInches( 90, 90, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 15:
@@ -100,7 +100,7 @@ public class AutoSlalom extends AutoBaseClass {
                     }
                     break;
                 case 16:
-                    driveInches( 150 , 90, 1);
+                    driveInches( 150 , 180, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 17:
@@ -109,7 +109,7 @@ public class AutoSlalom extends AutoBaseClass {
                     }
                     break;
                 case 18:
-                    driveInches( 60, 45, 1);
+                    driveInches( 60, -225, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 19:
@@ -118,7 +118,7 @@ public class AutoSlalom extends AutoBaseClass {
                     }
                     break;
                 case 20:
-                    driveInches( 30, -45, 1);
+                    driveInches( 30, 180, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 21:
