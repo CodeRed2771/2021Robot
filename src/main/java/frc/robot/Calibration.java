@@ -101,7 +101,7 @@ public class Calibration {
     public final static int DT_MM_VELOCITY = 10000;
 
     // COMPETITION AND PRACTICE
-    public static final double DRIVE_DISTANCE_TICKS_PER_INCH = .414;
+    public static final double DRIVE_DISTANCE_TICKS_PER_INCH = .418;
 
     // TEST BOT2
     // public static final double DRIVE_DISTANCE_TICKS_PER_INCH = 32.900;
