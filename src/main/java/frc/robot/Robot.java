@@ -53,6 +53,7 @@ public class Robot extends TimedRobot {
 		Climber.getInstance();
 		ColorSensorAndTraverser.getInstance();
 		Vision.getInstance();
+		VisionBall.SetUpBallVision();
 
 		setupAutoChoices();
 		mAutoProgram = new AutoDoNothing();

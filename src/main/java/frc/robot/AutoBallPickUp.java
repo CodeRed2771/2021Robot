@@ -13,7 +13,7 @@ public class AutoBallPickUp extends AutoBaseClass {
     private double angleOffset = 0;
     private static boolean ballCollected = false;
 
-    private ArrayList<Point> BallLocations = new ArrayList<>();
+    private static  ArrayList<Point> BallLocations = new ArrayList<>();
 
     public AutoBallPickUp () {
 
@@ -42,29 +42,40 @@ public class AutoBallPickUp extends AutoBaseClass {
             SmartDashboard.putNumber("Auto Step", getCurrentStep());
             switch (getCurrentStep()) {
             case 0:
-                VisionBall.SetUpBallVision();
                 //get ball list
                 ballCollected = false;
                 BallLocations.clear();
-                BallLocations = VisionBall.GetBallLocations(); // THIS LINE IS CAUSING ROBOT CODE TO CRASH
+                BallLocations = VisionBall.GetBallLocations();
                 advanceStep();
                 break;
             case 1:
+                turnDegrees(-BallLocations.get(0).y, 0.5);
                 //calculate strafe distance and direction
-                double Distance = BallLocations.get(0).y * Math.sin(Math.toRadians(BallLocations.get(0).x));
-                double Degrees = (Distance < 0) ? -90 : 90;
-                // driveInches(Math.abs(Distance), Degrees, .8);
-                SmartDashboard.putNumber("Strafe Distance:", Distance);
+                // double Distance = BallLocations.get(0).y * Math.sin(Math.toRadians(BallLocations.get(0).x));
+                // double Degrees = (Distance < 0) ? -90 : 90;
+                // // driveInches(Math.abs(Distance), Degrees, .8);
+                // SmartDashboard.putNumber("Strafe Distance:", Distance);
                 //command serve base
-                setTimerAndAdvanceStep(4000);
+                setTimerAndAdvanceStep(2000);
                 break;
             case 2:
-                if (driveCompleted()){
-                    ballCollected = true;
+                if (driveCompleted())
+                {
                     advanceStep();
                 }
                 break;
             case 3:
+                driveInches(BallLocations.get(0).x, 0, 0.5);
+                setTimerAndAdvanceStep(3000);
+                break;
+            case 4:
+                if (driveCompleted())
+                {
+                    ballCollected = true;
+                    advanceStep();
+                }
+                break;
+            case 5:
                 stop();
                 break;
             }

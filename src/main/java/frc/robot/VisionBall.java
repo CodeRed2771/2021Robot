@@ -2,7 +2,6 @@ package frc.robot;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.concurrent.Semaphore;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -32,7 +31,7 @@ public class VisionBall
     private static final int BALL_MIN_WIDTH = 20;
     //Camera Physical Constants
     private static final float CAMERA_HEIGHT = 6.5f;
-    private static final float CAMERA_TILT = 9.5f; 
+    private static final float CAMERA_TILT = 8.9f; 
     private static final int RELATIVE_CENTER_X = 320; //TODO - Get actual center x
     //Ball Physical Constants
     private static final float CENTER_BALL_HEIGHT = 3.5f;
@@ -68,9 +67,12 @@ public class VisionBall
         mCameraFrameGrabber = CameraServer.getInstance().getVideo();
         mCameraFrameGrabber.setSource(mBallTrackingCamera);
 
+        //Sets Camera FPS to 30
+        mBallTrackingCamera.setFPS(30);
+
         //Setup Publishing Streams
-        mRawImageStream = CameraServer.getInstance().putVideo("Raw Image", CAMERA_HORIZONTAL_RESOLUTION, CAMERA_VERTICAL_RESOLUTION);
-        mBinaryStream = CameraServer.getInstance().putVideo("Binary Image", CAMERA_HORIZONTAL_RESOLUTION, CAMERA_VERTICAL_RESOLUTION);
+        // mRawImageStream = CameraServer.getInstance().putVideo("Raw Image", CAMERA_HORIZONTAL_RESOLUTION, CAMERA_VERTICAL_RESOLUTION);
+        // mBinaryStream = CameraServer.getInstance().putVideo("Binary Image", CAMERA_HORIZONTAL_RESOLUTION, CAMERA_VERTICAL_RESOLUTION);
         mProcessedStream = CameraServer.getInstance().putVideo("Processed Image", CAMERA_HORIZONTAL_RESOLUTION, CAMERA_VERTICAL_RESOLUTION);
 
         //Report Back Succesful Init
@@ -88,40 +90,31 @@ public class VisionBall
     public static ArrayList<Point> GetBallLocations()
     {
         //Grab and process a frame
-        SmartDashboard.putString("aaaaaaaaaaaaaaaaaaaaaaaaa", "0");
         GrabFrameFromServer();
-        SmartDashboard.putString("aaaaaaaaaaaaaaaaaaaaaaaaa", "1");
         ProcessFrame();
-        SmartDashboard.putString("aaaaaaaaaaaaaaaaaaaaaaaaa", "2");
 
         //Find all the Contours in the frame
         ArrayList<Rect> balls = FindContoursInFrame();
-        SmartDashboard.putString("aaaaaaaaaaaaaaaaaaaaaaaaa", "3");
 
         //Find position of balls in relationship to camera - returned as polar coordinants
         ArrayList<Point> ballLocations = FindPositions(balls);
-        SmartDashboard.putString("aaaaaaaaaaaaaaaaaaaaaaaaa", "4");
 
         //Sort Balls from nearest to furthest
         ballLocations = PrioritizeBalls(ballLocations);
-        SmartDashboard.putString("aaaaaaaaaaaaaaaaaaaaaaaaa", "5");
 
         return ballLocations;
     }
     
     private static void GrabFrameFromServer()
     {
+        // Grabs Frame From Camera
         int attemptCount = 0;
         while (mCameraFrameGrabber.grabFrame(mUnprocessedFrame) == 0 && attemptCount < 10)
-            attemptCount++;    
-        // not grabbing frame
-        SmartDashboard.putNumber("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", mUnprocessedFrame.cols()); 
+            attemptCount++;
         //Display raw image
-        mRawImageStream.putFrame(mUnprocessedFrame); // failing at this step
-        SmartDashboard.putString("cccccccccccccccccccccccc", "1");
+        // mRawImageStream.putFrame(mUnprocessedFrame);
         //Save copy of raw image so that we can bound balls on it later
         Imgproc.cvtColor(mUnprocessedFrame, mProcessedFrame, Imgproc.COLOR_BGR2RGB);
-        SmartDashboard.putString("cccccccccccccccccccccccc", "2");
     }
 
     private static void ProcessFrame()
@@ -139,7 +132,7 @@ public class VisionBall
         Imgproc.erode(mBinaryFrame, mBinaryFrame, element);
 
         //Display the filtered binary image
-        mBinaryStream.putFrame(mBinaryFrame);
+        // mBinaryStream.putFrame(mBinaryFrame);
     }
 
     private static ArrayList<Rect> FindContoursInFrame()
