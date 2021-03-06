@@ -30,8 +30,8 @@ public class VisionBall
     //Contour Filtering Constants
     private static final int BALL_MIN_WIDTH = 20;
     //Camera Physical Constants
-    private static final float CAMERA_HEIGHT = 6.5f;
-    private static final float CAMERA_TILT = 8.9f; 
+    private static final float CAMERA_HEIGHT = 7f;
+    private static final float CAMERA_TILT = 2f; 
     private static final int RELATIVE_CENTER_X = 320; //TODO - Get actual center x
     //Ball Physical Constants
     private static final float CENTER_BALL_HEIGHT = 3.5f;
