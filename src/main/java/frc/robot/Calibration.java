@@ -51,7 +51,7 @@ public class Calibration {
 
     public final static double TURN_P = 7;
     public final static double TURN_I = 0.007;
-    public final static int TURN_I_ZONE = 20;
+    public final static int TURN_I_ZONE = 40;
     public final static double TURN_D = 0;
 
     public final static double TURN_F = 0;
