@@ -30,8 +30,14 @@ public class VisionBall
     //Contour Filtering Constants
     private static final int BALL_MIN_WIDTH = 20;
     //Camera Physical Constants
-    private static final float CAMERA_HEIGHT = 6.4375f;
-    private static final float CAMERA_TILT = 12.1f; 
+    
+    //Comp Robot
+    // private static final float CAMERA_HEIGHT = 6.4375f;      // RECALLIBRATE
+    // private static final float CAMERA_TILT = 12.1f;          // RECALLIBRATE
+    
+    //Practice Robot
+    private static final float CAMERA_HEIGHT = 7.25f;
+    private static final float CAMERA_TILT = 12.35f;
     private static final int RELATIVE_CENTER_X = 320; //TODO - Get actual center x
     //Ball Physical Constants
     private static final float CENTER_BALL_HEIGHT = 3.5f;
@@ -72,7 +78,7 @@ public class VisionBall
 
         //Setup Publishing Streams
         // mRawImageStream = CameraServer.getInstance().putVideo("Raw Image", CAMERA_HORIZONTAL_RESOLUTION, CAMERA_VERTICAL_RESOLUTION);
-        // mBinaryStream = CameraServer.getInstance().putVideo("Binary Image", CAMERA_HORIZONTAL_RESOLUTION, CAMERA_VERTICAL_RESOLUTION);
+        mBinaryStream = CameraServer.getInstance().putVideo("Binary Image", CAMERA_HORIZONTAL_RESOLUTION, CAMERA_VERTICAL_RESOLUTION);
         mProcessedStream = CameraServer.getInstance().putVideo("Processed Image", CAMERA_HORIZONTAL_RESOLUTION, CAMERA_VERTICAL_RESOLUTION);
 
         //Report Back Succesful Init
@@ -123,7 +129,8 @@ public class VisionBall
         Imgproc.cvtColor(mUnprocessedFrame, mUnprocessedFrame, Imgproc.COLOR_BGR2HSV);
 
         //Threshold the Image to HSV
-        Core.inRange(mUnprocessedFrame, new Scalar(10, 140, 120), new Scalar(33, 255, 255), mBinaryFrame);
+        // Core.inRange(mUnprocessedFrame, new Scalar(10, 140, 120), new Scalar(33, 255, 255), mBinaryFrame);
+        Core.inRange(mUnprocessedFrame, new Scalar(10, 0, 225), new Scalar(40, 255, 255), mBinaryFrame);
 
         //Erode and Dilate Image to help filter false positives
         Mat element = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(15, 15));
@@ -132,7 +139,7 @@ public class VisionBall
         Imgproc.erode(mBinaryFrame, mBinaryFrame, element);
 
         //Display the filtered binary image
-        // mBinaryStream.putFrame(mBinaryFrame);
+        mBinaryStream.putFrame(mBinaryFrame);
     }
 
     private static ArrayList<Rect> FindContoursInFrame()

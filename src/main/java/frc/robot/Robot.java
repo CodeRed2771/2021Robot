@@ -368,6 +368,8 @@ public class Robot extends TimedRobot {
 		}
 
 		Calibration.checkIfShouldResetCalibration();
+
+		VisionBall.GetBallLocations();
 	}
 
 	/**
