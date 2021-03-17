@@ -22,8 +22,6 @@ public class Intake {
         intakeMotor = new CANSparkMax(Wiring.INTAKE_MOTOR_ID, MotorType.kBrushless);
         compressor = new Compressor();
         intakeMotor.setClosedLoopRampRate(0.5);
-
-        // pistonArm1 = new DoubleSolenoid(forwardChannel, reverseChannel);
         intakeMotor.setSmartCurrentLimit(20);
     }
 
@@ -43,7 +41,7 @@ public class Intake {
     }
 
     public static void runIntakeForwards() {
-        intakeMotor.set(.6);
+        intakeMotor.set(-.6);
     }
 
     public static void stopIntake() {
@@ -51,6 +49,6 @@ public class Intake {
     }
 
     public static void runIntakeBackwards() {
-        intakeMotor.set(-.5);
+        intakeMotor.set(.5);
     }
 }

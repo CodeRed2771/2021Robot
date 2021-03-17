@@ -33,9 +33,11 @@ public class Robot extends TimedRobot {
 	final String fiveBallsMiddle = "5 Balls Middle";
 	final String sixBallsLeft = "6 Balls Left";
 	final String autoCalibrator = "Auto Calibrator";
+	final String autoWheelAlign = "Auto Wheel Align";
 	final String autoAlign = "Auto Align";
 	final String ballPickUp = "Auto Ball Pick Up";
 	private boolean isIntakeUpPosition = true;
+	private boolean intakeKeyAlreadyPressed = false;
 
 	@Override
 	public void robotInit() {
@@ -93,18 +95,21 @@ public class Robot extends TimedRobot {
 		if (gamepad.stopIntake()) {
 			Intake.stopIntake();
 		}
-		// if (gamepad.intakeDownPosition()) {
-		// 	Intake.moveIntakeDown();
-		// }
+
 		if (gamepad.intakeUpPosition()) {
-			if (isIntakeUpPosition) {
-				Intake.moveIntakeDown();
-				isIntakeUpPosition = false;
-			} else if (isIntakeUpPosition == false) {
-				Intake.moveIntakeUp();
-				isIntakeUpPosition = true;
+			if (!intakeKeyAlreadyPressed) {
+				if (isIntakeUpPosition) {
+					Intake.moveIntakeDown();
+					isIntakeUpPosition = false;
+				} else if (!isIntakeUpPosition) {
+					Intake.moveIntakeUp();
+					isIntakeUpPosition = true;
+				}
+				intakeKeyAlreadyPressed = true;
 			}
-		}
+		} else
+			intakeKeyAlreadyPressed = false;
+
 		// if (gamepad.spinWheel()) {
 		// 	ColorSensorAndTraverser.start3To5TimesSpinning();
 		// }
@@ -303,6 +308,10 @@ public class Robot extends TimedRobot {
 		case autoCalibrator:
 			mAutoProgram = new AutoCalibrator();
 			mAutoProgram.start(robotPosition);
+			break;
+		case autoWheelAlign:
+			mAutoProgram = new AutoWheelAlignment();
+			mAutoProgram.start();
 			break;
 		case autoAlign:
 			mAutoProgram = new AutoAlign();
