@@ -28,6 +28,8 @@ public class Robot extends TimedRobot {
 	final String bluepathAutonSkillstwo = "skill two a";
 	final String skillsOne = "Skill One";
 	final String AutoSlalom = "Slalom"; 
+	final String autoBarrelRace = "BarrelRace";
+	final String AutoBouncePath = "BouncePath";
 	final String threeBasicBalls = "3 Basic Balls";
 	final String sixBallRight = "6 Balls Right";
 	final String fiveBallsMiddle = "5 Balls Middle";
@@ -288,7 +290,15 @@ public class Robot extends TimedRobot {
 		case AutoSlalom:
 			mAutoProgram = new AutoSlalom();
 			mAutoProgram.start();
-			break;		
+			break;
+		case autoBarrelRace:
+			mAutoProgram = new AutoBarrelRace();
+			mAutoProgram.start();
+			break;
+		case AutoBouncePath:
+			mAutoProgram = new AutoBouncePath();
+			mAutoProgram.start();
+			break;	
 		case threeBasicBalls:
 			mAutoProgram = new AutonBasic3BallOffLine();
 			mAutoProgram.start(robotPosition);
