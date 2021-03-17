@@ -52,7 +52,7 @@ public class Robot extends TimedRobot {
 		Calibration.loadSwerveCalibration();
 		DriveTrain.getInstance();
 		DriveAuto.getInstance();
-		Climber.getInstance();
+		// Climber.getInstance();
 		ColorSensorAndTraverser.getInstance();
 		Vision.getInstance();
 		VisionBall.SetUpBallVision();

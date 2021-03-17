@@ -65,7 +65,7 @@ public class AutoWheelAlignment extends AutoBaseClass {
                 break;
   
             case 8:
-                stop();
+                setStep(0);
                 break;
             }
         }
