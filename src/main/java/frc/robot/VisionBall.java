@@ -32,12 +32,12 @@ public class VisionBall
     //Camera Physical Constants
     
     //Comp Robot
-    // private static final float CAMERA_HEIGHT = 6.4375f;      // RECALLIBRATE
-    // private static final float CAMERA_TILT = 12.1f;          // RECALLIBRATE
+    private static final float CAMERA_HEIGHT = 14.6f;
+    private static final float CAMERA_TILT = 6.4f;
     
     //Practice Robot
-    private static final float CAMERA_HEIGHT = 7.25f;
-    private static final float CAMERA_TILT = 12.35f;
+    // private static final float CAMERA_HEIGHT = 7.25f;
+    // private static final float CAMERA_TILT = 12.35f;
     private static final int RELATIVE_CENTER_X = 320; //TODO - Get actual center x
     //Ball Physical Constants
     private static final float CENTER_BALL_HEIGHT = 3.5f;
@@ -129,8 +129,13 @@ public class VisionBall
         Imgproc.cvtColor(mUnprocessedFrame, mUnprocessedFrame, Imgproc.COLOR_BGR2HSV);
 
         //Threshold the Image to HSV
-        // Core.inRange(mUnprocessedFrame, new Scalar(10, 140, 120), new Scalar(33, 255, 255), mBinaryFrame);
-        Core.inRange(mUnprocessedFrame, new Scalar(10, 0, 225), new Scalar(40, 255, 255), mBinaryFrame);
+        Core.inRange(mUnprocessedFrame, new Scalar(10, 140, 120), new Scalar(33, 255, 255), mBinaryFrame);
+
+        // PRACTICE BOT
+        // Core.inRange(mUnprocessedFrame, new Scalar(10, 0, 225), new Scalar(40, 255, 255), mBinaryFrame);
+
+        // COMP BOT
+        // Core.inRange(mUnprocessedFrame, new Scalar(10, 0, 225), new Scalar(40, 255, 255), mBinaryFrame);
 
         //Erode and Dilate Image to help filter false positives
         Mat element = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(15, 15));
