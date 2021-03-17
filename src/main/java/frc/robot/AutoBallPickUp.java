@@ -43,12 +43,19 @@ public class AutoBallPickUp extends AutoBaseClass {
             switch (getCurrentStep()) {
             case 0:
                 //get ball list
+                Intake.moveIntakeDown();
+                setTimerAndAdvanceStep(2000);
+                break;
+            case 1:
+                advanceStep();
+                break;
+            case 2:
                 ballCollected = false;
                 BallLocations.clear();
                 BallLocations = VisionBall.GetBallLocations();
                 advanceStep();
                 break;
-            case 1:
+            case 3:
                 turnDegrees(-BallLocations.get(0).x, 0.5);
                 //calculate strafe distance and direction
                 // double Distance = BallLocations.get(0).y * Math.sin(Math.toRadians(BallLocations.get(0).x));
@@ -58,24 +65,25 @@ public class AutoBallPickUp extends AutoBaseClass {
                 //command serve base
                 setTimerAndAdvanceStep(2000);
                 break;
-            case 2:
+            case 4:
                 if (driveCompleted())
                 {
                     advanceStep();
                 }
                 break;
-            case 3:
-                driveInches(BallLocations.get(0).y/1, 0, 0.5);
+            case 5:
+                Intake.runIntakeForwards();
+                driveInches(BallLocations.get(0).y, 0, 0.5);
                 setTimerAndAdvanceStep(3000);
                 break;
-            case 4:
+            case 6:
                 if (driveCompleted())
                 {
                     ballCollected = true;
                     advanceStep();
                 }
                 break;
-            case 5:
+            case 7:
                 stop();
                 break;
             }

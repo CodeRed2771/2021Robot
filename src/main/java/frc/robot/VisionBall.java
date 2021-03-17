@@ -33,7 +33,7 @@ public class VisionBall
     
     //Comp Robot
     private static final float CAMERA_HEIGHT = 14.6f;
-    private static final float CAMERA_TILT = 6.4f;
+    private static final float CAMERA_TILT = 11.3f;
     
     //Practice Robot
     // private static final float CAMERA_HEIGHT = 7.25f;
