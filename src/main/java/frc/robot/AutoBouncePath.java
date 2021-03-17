@@ -64,7 +64,7 @@ public class AutoBouncePath extends AutoBaseClass {
                     }
                     break;
                 case 8://segment 5 
-                    driveInches( 0, 0, 1);
+                    driveInches( 45, 90, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 9:
@@ -73,7 +73,7 @@ public class AutoBouncePath extends AutoBaseClass {
                     }
                     break;
                 case 10://segment 6 
-                    driveInches( 0, 0, 1);
+                    driveInches( 120, 0, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 11:
@@ -82,7 +82,7 @@ public class AutoBouncePath extends AutoBaseClass {
                     }
                     break;
                 case 12://segment 7
-                    driveInches( 0, 0, 1);
+                    driveInches( -120, 0, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 13:
@@ -91,7 +91,7 @@ public class AutoBouncePath extends AutoBaseClass {
                     }
                     break;
                 case 14://segment 8
-                    driveInches( 0, 0, 1);
+                    driveInches( 90, 90, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 15:
@@ -100,7 +100,7 @@ public class AutoBouncePath extends AutoBaseClass {
                     }
                     break;
                 case 16://segment 9 
-                    driveInches(  0, 0, 1);
+                    driveInches(  120, 0, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 17:
@@ -109,7 +109,7 @@ public class AutoBouncePath extends AutoBaseClass {
                     }
                     break;
                 case 18://segment 10 
-                    driveInches( 0, 0, 1);
+                    driveInches( -60, 0, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 19:
@@ -118,7 +118,7 @@ public class AutoBouncePath extends AutoBaseClass {
                     }
                     break;
                 case 20://segment 11
-                    driveInches( 0, 0, 1);
+                    driveInches( 60, 90, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 21:
