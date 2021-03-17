@@ -350,6 +350,7 @@ public class Robot extends TimedRobot {
 		autoChooser.addOption(fiveBallsMiddle, fiveBallsMiddle);
 		autoChooser.addOption(sixBallsLeft, sixBallsLeft);
 		autoChooser.addOption(autoCalibrator, autoCalibrator);
+		autoChooser.addOption(autoWheelAlign, autoWheelAlign);
 		autoChooser.addOption(autoAlign, autoAlign);
 		autoChooser.addOption(ballPickUp, ballPickUp);
 		SmartDashboard.putData("Auto Chose:", autoChooser);

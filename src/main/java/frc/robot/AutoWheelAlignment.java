@@ -32,36 +32,24 @@ public class AutoWheelAlignment extends AutoBaseClass {
                 setTimerAndAdvanceStep(2000);
                 break;
             case 1:
-                if (driveCompleted()) {
-                    advanceStep();
-                }
-                break;
+                 break;
             case 2:
                 DriveTrain.setAllTurnOrientation(DriveTrain.angleToPosition(180), true);
                 setTimerAndAdvanceStep(2000);
                 break;
             case 3:
-                if (driveCompleted()) {
-                    advanceStep();
-                }
                 break;
             case 4:
                 DriveTrain.setAllTurnOrientation(DriveTrain.angleToPosition(270), true);
                 setTimerAndAdvanceStep(2000);
                 break;
             case 5:
-                if (driveCompleted()) {
-                    advanceStep();
-                }
                 break;
             case 6:
                 DriveTrain.setAllTurnOrientation(DriveTrain.angleToPosition(0), true);
                 setTimerAndAdvanceStep(2000);
                 break;
             case 7:
-                if (driveCompleted()) {
-                    advanceStep();
-                }
                 break;
   
             case 8:
