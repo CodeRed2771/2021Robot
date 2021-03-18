@@ -28,7 +28,7 @@ public class AutoBarrelRace extends AutoBaseClass {
 
             switch (getCurrentStep()) {
                 case 0://segment 1 
-                    driveInches(72, 90, 1);
+                    driveInches(10, 0, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 1:
@@ -37,7 +37,7 @@ public class AutoBarrelRace extends AutoBaseClass {
                     } 
                     break;
                 case 2://segment 2
-                   driveInches( 72, 0, 1);
+                   driveInches( 170, 90, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 3:
@@ -46,7 +46,7 @@ public class AutoBarrelRace extends AutoBaseClass {
                     } 
                     break;
                 case 4://segment 3 
-                    driveInches( 180, 90, 1);
+                    driveInches( -30, 0, 1);
                      setTimerAndAdvanceStep(2000);
                      break;
                 case 5:
@@ -55,7 +55,7 @@ public class AutoBarrelRace extends AutoBaseClass {
                      } 
                      break;
                 case 6://segment 4 
-                    driveInches( -64, 0, 1);
+                    driveInches( -30, 90, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 7:
@@ -64,7 +64,7 @@ public class AutoBarrelRace extends AutoBaseClass {
                     }
                     break;
                 case 8://segment 5 
-                    driveInches( 60, 90, 1);
+                    driveInches( 30, 0, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 9:
@@ -73,7 +73,7 @@ public class AutoBarrelRace extends AutoBaseClass {
                     }
                     break;
                 case 10://segment 6 
-                    driveInches( 64, 0, 1);
+                    driveInches( 170, 90, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 11:
@@ -82,7 +82,7 @@ public class AutoBarrelRace extends AutoBaseClass {
                     }
                     break;
                 case 12://segment 7
-                    driveInches( 60, 270, 1);
+                    driveInches( 50, 0, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 13:
@@ -91,7 +91,7 @@ public class AutoBarrelRace extends AutoBaseClass {
                     }
                     break;
                 case 14://segment 8
-                    driveInches( -64, 0, 1);
+                    driveInches( -40, 90, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 15:
@@ -100,7 +100,7 @@ public class AutoBarrelRace extends AutoBaseClass {
                     }
                     break;
                 case 16://segment 9 
-                    driveInches(  180, 270, 1);
+                    driveInches(  -60, 0, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 17:
@@ -109,7 +109,7 @@ public class AutoBarrelRace extends AutoBaseClass {
                     }
                     break;
                 case 18://segment 10 
-                    driveInches( 64, 0, 1);
+                    driveInches( -40, 90, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 19:
@@ -118,7 +118,7 @@ public class AutoBarrelRace extends AutoBaseClass {
                     }
                     break;
                 case 20://segment 11
-                    driveInches( 62, 270, 1);
+                    driveInches( 45, 0, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 21:
@@ -127,6 +127,13 @@ public class AutoBarrelRace extends AutoBaseClass {
                     }
                     break;
                 case 22:
+                    driveInches(165, 90, 1);
+                    break;
+                case 23:
+                    if (driveCompleted()){
+                        advanceStep();
+                    }
+                case 24:
                     stop();
                     break;
             } 
