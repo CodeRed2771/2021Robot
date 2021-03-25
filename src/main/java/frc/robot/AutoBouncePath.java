@@ -15,7 +15,7 @@ public class AutoBouncePath extends AutoBaseClass {
         super.start();
     }
 
-    public void stop() {
+    public void stop() { 
         super.stop();
     }
 
