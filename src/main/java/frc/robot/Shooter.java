@@ -115,7 +115,7 @@ public class Shooter {
                 if (oneShot) {
                     timer += 1; // ONE TIMER UNIT EQUALS ABOUT 20 MILLISECONDS
                     openGate();
-                    if (timer >= 6) {
+                    if (timer >= 3) {
                         closeGate();
                         resetTimer();
                         oneShot = false;

@@ -83,7 +83,7 @@ public class AutoAlign extends AutoBaseClass {
                 break;
             case 5:
                 wasAligned = true;
-                Vision.flashLED();
+                // Vision.flashLED();
                 System.out.println("On Target!");
                 advanceStep();
                 break;

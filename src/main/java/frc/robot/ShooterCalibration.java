@@ -21,8 +21,8 @@ class ShooterCalibration {
       0.55000000,  // 16 // NEEDS TO BE MORE ACCURATE
       0.75000000,  // 17 // NEEDS TO BE MORE ACCURATE
       0.76052524,  // 18
-      0.71313335,  // 19
-      0.69922230,  // 20
+      0.73313335,  // 19
+      0.75,       // 20
       0.78580460,  // 21
       0.76351470,  // 22
       0.76341470,  // 23 // NEEDS TO BE MORE ACCURATE

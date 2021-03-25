@@ -131,6 +131,7 @@ public class ShooterPivoter {
 
     public static void setDesiredShootPosition (double desiredPosition) {
         targetShaftPosition = minPivotPosition + ((maxPivotPosition - minPivotPosition) * desiredPosition);
+        SmartDashboard.putNumber("desiredPosition", desiredPosition);
     }
 
     public static boolean shooterAtPosition () {
