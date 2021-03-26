@@ -67,7 +67,7 @@ public class Calibration {
 
     // Physical Module - B
     public final static int DT_B_DRIVE_SPARK_ID = 7;
-    public final static int DT_B_TURN_TALON_ID = 0;
+    public final static int DT_B_TURN_TALON_ID = 8;
     private static double DT_B_ABS_ZERO = DT_B_ABS_ZERO_INITIAL;
 
     public static double GET_DT_B_ABS_ZERO() {
