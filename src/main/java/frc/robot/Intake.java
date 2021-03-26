@@ -16,6 +16,8 @@ public class Intake {
     private static int BallCount = 0;
     public static CurrentBreaker currentBreaker;
 
+    private static DoubleSolenoid queuer;
+
     public Intake() {
 
         pistonArm1 = new DoubleSolenoid(0, 1);
@@ -23,6 +25,8 @@ public class Intake {
         compressor = new Compressor();
         intakeMotor.setClosedLoopRampRate(0.5);
         intakeMotor.setSmartCurrentLimit(20);
+
+        queuer = new DoubleSolenoid(2, 3);
     }
 
     public static Intake getInstance() {
@@ -38,6 +42,14 @@ public class Intake {
 
     public static void moveIntakeUp() {
         pistonArm1.set(DoubleSolenoid.Value.kForward);
+    }
+
+    public static void moveQueuerDown() {
+        queuer.set(DoubleSolenoid.Value.kForward);
+    }
+
+    public static void moveQueruerUp() {
+        queuer.set(DoubleSolenoid.Value.kReverse);
     }
 
     public static void runIntakeForwards() {

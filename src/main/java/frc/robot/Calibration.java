@@ -67,7 +67,7 @@ public class Calibration {
 
     // Physical Module - B
     public final static int DT_B_DRIVE_SPARK_ID = 7;
-    public final static int DT_B_TURN_TALON_ID = 8;
+    public final static int DT_B_TURN_TALON_ID = 0;
     private static double DT_B_ABS_ZERO = DT_B_ABS_ZERO_INITIAL;
 
     public static double GET_DT_B_ABS_ZERO() {
@@ -120,10 +120,10 @@ public class Calibration {
 
     public static final double INTAKE_MAX_CURRENT = 14;
 
-    public static final double SHOOTER_P = 1.3;
+    public static final double SHOOTER_P = 0.7;
     public static final double SHOOTER_I = 0.0;
-    public static final double SHOOTER_D = 8;
-    public static final double SHOOTER_F = 0.054;
+    public static final double SHOOTER_D = 0;
+    public static final double SHOOTER_F = 0.0425;
     public static final int SHOOTER_DEFAULT_SPEED = 13000;
 
     public static final double LINKAGE_P = 5; // was 3.2

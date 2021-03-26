@@ -93,6 +93,7 @@ public class Robot extends TimedRobot {
 		}
 		if (gamepad.startIntake()) {
 			Intake.runIntakeForwards();
+			Intake.moveQueuerDown();
 		}
 		if (gamepad.stopIntake()) {
 			Intake.stopIntake();
@@ -141,6 +142,8 @@ public class Robot extends TimedRobot {
 		}
 		if (gamepad.startShooter()) {
 			Shooter.StartShooter();
+			Intake.moveIntakeDown();
+			Intake.moveQueruerUp();
 		}
 		// if (gamepad.levelScale()) {
 		// 	ColorSensorAndTraverser.runTrue(true);
