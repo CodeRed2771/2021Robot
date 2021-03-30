@@ -1,5 +1,6 @@
 package frc.robot;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import javax.lang.model.util.ElementScanner6;
@@ -12,6 +13,10 @@ public class AutoBallPickUp extends AutoBaseClass {
 
     private double angleOffset = 0;
     private static boolean ballCollected = false;
+    private static double degreesOffOfBall = 0;
+    private static double distanceFromBall = 0;
+
+
 
     private static  ArrayList<Point> BallLocations = new ArrayList<>();
 
@@ -21,6 +26,16 @@ public class AutoBallPickUp extends AutoBaseClass {
 
     public boolean ballCollected () {
         return ballCollected;
+    }
+
+    public static double getDegreesOffBall ()
+    {
+        return degreesOffOfBall;
+    }
+
+    public static double distanceFromBall()
+    {
+        return distanceFromBall;
     }
 
     public void start() {
@@ -56,14 +71,28 @@ public class AutoBallPickUp extends AutoBaseClass {
                 advanceStep();
                 break;
             case 3:
-                turnDegrees(-BallLocations.get(0).x, 0.5);
-                //calculate strafe distance and direction
-                // double Distance = BallLocations.get(0).y * Math.sin(Math.toRadians(BallLocations.get(0).x));
-                // double Degrees = (Distance < 0) ? -90 : 90;
-                // // driveInches(Math.abs(Distance), Degrees, .8);
-                // SmartDashboard.putNumber("Strafe Distance:", Distance);
+                try 
+                {
+                    if (BallLocations.get(0).y > 120)
+                    {
+                        degreesOffOfBall = 0;
+                        distanceFromBall = 0;
+                        setStep(7);
+                    }
+                    else
+                    {
+                        turnDegrees(-BallLocations.get(0).x, 0.5);
+                        degreesOffOfBall = -BallLocations.get(0).x;
+                        setTimerAndAdvanceStep(2000);
+                    }
+                } 
+                catch (ArrayIndexOutOfBoundsException e)
+                {
+                    degreesOffOfBall = 0;
+                    distanceFromBall = 0;
+                    setStep(7);
+                }
                 //command serve base
-                setTimerAndAdvanceStep(2000);
                 break;
             case 4:
                 if (driveCompleted())
@@ -74,6 +103,7 @@ public class AutoBallPickUp extends AutoBaseClass {
             case 5:
                 Intake.runIntakeForwards();
                 driveInches(BallLocations.get(0).y, 0, 0.5);
+                distanceFromBall = BallLocations.get(0).y;
                 setTimerAndAdvanceStep(3000);
                 break;
             case 6:
