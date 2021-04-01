@@ -54,18 +54,21 @@ public class AutoBallPickUp extends AutoBaseClass {
     public void tick() {
         if (isRunning()) {
             DriveAuto.tick();
-            SmartDashboard.putNumber("Auto Step", getCurrentStep());
+            SmartDashboard.putNumber("Auto Step For Ball", getCurrentStep());
             switch (getCurrentStep()) {
             case 0:
                 //get ball list
-                Intake.moveIntakeDown();
-                setTimerAndAdvanceStep(2000);
+                ballCollected = false;
+                if (!Intake.isIntakeDown()) {
+                    Intake.moveIntakeDown();
+                    setTimerAndAdvanceStep(2000);
+                } else {
+                    setStep(2);
+                }
                 break;
             case 1:
-                advanceStep();
                 break;
             case 2:
-                ballCollected = false;
                 BallLocations.clear();
                 BallLocations = VisionBall.GetBallLocations();
                 advanceStep();
@@ -73,7 +76,7 @@ public class AutoBallPickUp extends AutoBaseClass {
             case 3:
                 try 
                 {
-                    if (BallLocations.get(0).y > 120)
+                    if (BallLocations.get(0).y > 123)
                     {
                         degreesOffOfBall = 0;
                         distanceFromBall = 0;
@@ -81,7 +84,7 @@ public class AutoBallPickUp extends AutoBaseClass {
                     }
                     else
                     {
-                        turnDegrees(-BallLocations.get(0).x, 0.5);
+                        turnDegrees(-BallLocations.get(0).x, 1);
                         degreesOffOfBall = -BallLocations.get(0).x;
                         setTimerAndAdvanceStep(2000);
                     }
@@ -102,18 +105,18 @@ public class AutoBallPickUp extends AutoBaseClass {
                 break;
             case 5:
                 Intake.runIntakeForwards();
-                driveInches(BallLocations.get(0).y, 0, 0.5);
+                driveInches(BallLocations.get(0).y, 0, 1);
                 distanceFromBall = BallLocations.get(0).y;
-                setTimerAndAdvanceStep(3000);
+                setTimerAndAdvanceStep(2000);
                 break;
             case 6:
                 if (driveCompleted())
-                {
-                    ballCollected = true;
+                {  
                     advanceStep();
                 }
                 break;
             case 7:
+                ballCollected = true;      
                 stop();
                 break;
             }

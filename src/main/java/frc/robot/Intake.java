@@ -36,6 +36,10 @@ public class Intake {
         return instance;
     }
 
+    public static boolean isIntakeDown() {
+        return (pistonArm1.get() == DoubleSolenoid.Value.kReverse);
+    }
+
     public static void moveIntakeDown() {
         pistonArm1.set(DoubleSolenoid.Value.kReverse);
     }

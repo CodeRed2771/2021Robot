@@ -25,39 +25,42 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
             SmartDashboard.putNumber("Auto Step", getCurrentStep());
             switch (getCurrentStep()) {
             case 0:
-                mAutoBallPickUp.tick();
-                advanceStep();
-                break;
-            case 1:
                 mAutoBallPickUp.start();
                 advanceStep();
                 break;
-            case 2:
+            case 1:
+                mAutoBallPickUp.tick();
                 if (mAutoBallPickUp.ballCollected()) {
-                advanceStep();
+                    advanceStep();
                 }
+                break;
+            case 2:
+                advanceStep();
+                // if (mAutoBallPickUp.ballCollected()) {
+                // advanceStep();
+                // }
                 break;
             case 3:
                 if (mAutoBallPickUp.getDegreesOffBall() == 0 && mAutoBallPickUp.distanceFromBall() == 0)
                 {
                     setStep(50);
                 }
-                else if (mAutoBallPickUp.getDegreesOffBall() < -10)
+                else
                 {
                     setStep(70);
                 }
-                else
-                {
-                    setStep(90);
-                }
-                break;
+                // else
+                // {
+                //     setStep(90);
+                // }
+                // break;
 // ----------------------------------------------------------------------------------------------------------------------------------
 // BLUE PATH
 // ----------------------------------------------------------------------------------------------------------------------------------
 
 // BOTH PATH A AND B
             case 50:
-                driveInches(120, 0, 1);
+                driveInches(100, 0, 1);
                 setTimerAndAdvanceStep(3000);
                 break;
             case 51:
@@ -67,7 +70,7 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 }
                 break;
             case 52:
-                turnDegrees(30, 1);
+                turnDegrees(45, 1);
                 setTimerAndAdvanceStep(1000);
                 break;
             case 53:
@@ -81,13 +84,14 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 advanceStep();
                 break;
             case 55:
+                mAutoBallPickUp.tick();
                 if (mAutoBallPickUp.ballCollected())
                 {
                     advanceStep();
                 }
                 break;
             case 56:
-                turnToHeading(330, 1);
+                turnToHeading(340, 1);
                 setTimerAndAdvanceStep(2000);
                 break;
             case 57:
@@ -101,13 +105,14 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 advanceStep();
                 break;
             case 59:
+                mAutoBallPickUp.tick(); 
                 if (mAutoBallPickUp.ballCollected())
                 {
                     advanceStep();
                 }
                 break;
             case 60:
-                turnToHeading(37, 1);
+                turnToHeading(20, 1);
                 setTimerAndAdvanceStep(2000);
                 break;
             case 61:
@@ -121,6 +126,7 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 advanceStep();
                 break;
             case 63:
+                mAutoBallPickUp.tick();
                 if (mAutoBallPickUp.ballCollected())
                 {
                     advanceStep();
@@ -166,6 +172,7 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 advanceStep();
                 break;
             case 73:
+                mAutoBallPickUp.tick();
                 if (mAutoBallPickUp.ballCollected())
                 {
                     advanceStep();
@@ -185,6 +192,7 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 advanceStep();
                 break;
             case 77:
+                mAutoBallPickUp.tick();
                 if (mAutoBallPickUp.ballCollected())
                 {
                     advanceStep();
@@ -212,40 +220,33 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 break;
 
 // PATH B
-            
             case 90:
-                mAutoBallPickUp.start();
-                advanceStep();
+                turnToHeading(30, 1);
+                setTimerAndAdvanceStep(3000);
                 break;
             case 91:
-                if (mAutoBallPickUp.ballCollected())
+                if (driveCompleted())
                 {
                     advanceStep();
                 }
                 break;
             case 92:
-                turnToHeading(290, 1);
-                setTimerAndAdvanceStep(3000);
-                break;
-            case 93:
-                if (driveCompleted())
-                {
-                    advanceStep();
-                }
+                setStep(94);
                 break;
             case 94:
                 mAutoBallPickUp.start();
                 advanceStep();
                 break;
             case 95:
+                mAutoBallPickUp.tick();
                 if (mAutoBallPickUp.ballCollected())
                 {
                     advanceStep();
                 }
                 break;
             case 96:
-                turnToHeading(0, 1);
-                setTimerAndAdvanceStep(2000);
+                turnToHeading(290, 1);
+                setTimerAndAdvanceStep(3000);
                 break;
             case 97:
                 if (driveCompleted())
@@ -254,10 +255,31 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 }
                 break;
             case 98:
+                mAutoBallPickUp.start();
+                advanceStep();
+                break;
+            case 99:
+                mAutoBallPickUp.tick();
+                if (mAutoBallPickUp.ballCollected())
+                {
+                    advanceStep();
+                }
+                break;          
+            case 100:
+                turnToHeading(0, 1);
+                setTimerAndAdvanceStep(2000);
+                break;
+            case 101:
+                if (driveCompleted())
+                {
+                    advanceStep();
+                }
+                break;
+            case 102:
                 driveInches(132, 0, 1);
                 setTimerAndAdvanceStep(5000);
                 break;
-            case 99:
+            case 103:
                 if (driveCompleted())
                 {
                     setStep(1000);

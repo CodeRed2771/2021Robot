@@ -25,20 +25,20 @@ public class VisionBall
     private static final int CAMERA_VERTICAL_RESOLUTION = 480;
 
     //Camera FOV Constants 
-    private static final float CAMERA_HORIZONTOL_FOV = 60.0f;
+    private static final float CAMERA_HORIZONTOL_FOV = 40.0f;
     private static final float CAMERA_VERTICAL_FOV = 36.9f; //Calculated Experimentally
     //Contour Filtering Constants
-    private static final int BALL_MIN_WIDTH = 20;
+    private static final int BALL_MIN_WIDTH = 15;
     //Camera Physical Constants
     
     //Comp Robot
     private static final float CAMERA_HEIGHT = 14.6f;
-    private static final float CAMERA_TILT = 14.3f;
+    private static final float CAMERA_TILT = 9.75f;
     
     //Practice Robot
     // private static final float CAMERA_HEIGHT = 7.25f;
     // private static final float CAMERA_TILT = 12.35f;
-    private static final int RELATIVE_CENTER_X = 300; //TODO - Get actual center x
+    private static final int RELATIVE_CENTER_X = 295; //TODO - Get actual center x
     //Ball Physical Constants
     private static final float CENTER_BALL_HEIGHT = 3.5f;
 
@@ -129,7 +129,7 @@ public class VisionBall
         Imgproc.cvtColor(mUnprocessedFrame, mUnprocessedFrame, Imgproc.COLOR_BGR2HSV);
 
         //Threshold the Image to HSV
-        Core.inRange(mUnprocessedFrame, new Scalar(5, 85, 115), new Scalar(45, 255, 255), mBinaryFrame);
+        Core.inRange(mUnprocessedFrame, new Scalar(20, 115, 60), new Scalar(38, 255, 255), mBinaryFrame);
 
         // PRACTICE BOT
         // Core.inRange(mUnprocessedFrame, new Scalar(10, 0, 225), new Scalar(40, 255, 255), mBinaryFrame);
