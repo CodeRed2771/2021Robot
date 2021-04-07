@@ -80,7 +80,7 @@ public class ShooterPivoter {
 
         if (encoderPosition >= maxPivotPosition + .02) {
             targetShaftPosition = maxPivotPosition;
-        } else if (encoderPosition <= minPivotPosition - .02) {
+        } else if (encoderPosition <= minPivotPosition - .05) {
             targetShaftPosition = minPivotPosition;
         }
 

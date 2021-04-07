@@ -164,7 +164,22 @@ public class DriveAuto {
     }
 
     public static void turnToHeading(double desiredHeading, double turnSpeedFactor) {
-        double turnAmount = desiredHeading - RobotGyro.getRelativeAngle();
+        // double turnAmount = desiredHeading - RobotGyro.getRelativeAngle();
+
+        double turnAmount = 0;
+
+        if (desiredHeading - RobotGyro.getRelativeAngle() > 180)
+        {
+            turnAmount = (desiredHeading - RobotGyro.getRelativeAngle()) - 360;   
+        } 
+        else if (desiredHeading - RobotGyro.getRelativeAngle() < -180)
+        {
+            turnAmount = (desiredHeading - RobotGyro.getRelativeAngle()) + 360; 
+        }
+        else
+        {
+            turnAmount = desiredHeading - RobotGyro.getRelativeAngle();
+        }
         SmartDashboard.putNumber("DESIRED HEADING EQUALS", desiredHeading);
         SmartDashboard.putNumber("ROBOT GYRO RELATIVE", RobotGyro.getRelativeAngle());
         SmartDashboard.putNumber("TURN AMOUNT", turnAmount);

@@ -59,6 +59,7 @@ public class AutoBallPickUp extends AutoBaseClass {
             case 0:
                 //get ball list
                 ballCollected = false;
+                Intake.moveQueuerDown();
                 if (!Intake.isIntakeDown()) {
                     Intake.moveIntakeDown();
                     setTimerAndAdvanceStep(2000);
@@ -89,7 +90,7 @@ public class AutoBallPickUp extends AutoBaseClass {
                         setTimerAndAdvanceStep(2000);
                     }
                 } 
-                catch (ArrayIndexOutOfBoundsException e)
+                catch (Exception e)
                 {
                     degreesOffOfBall = 0;
                     distanceFromBall = 0;
@@ -105,7 +106,7 @@ public class AutoBallPickUp extends AutoBaseClass {
                 break;
             case 5:
                 Intake.runIntakeForwards();
-                driveInches(BallLocations.get(0).y, 0, 1);
+                driveInches(BallLocations.get(0).y + 3, 0, 1);
                 distanceFromBall = BallLocations.get(0).y;
                 setTimerAndAdvanceStep(2000);
                 break;

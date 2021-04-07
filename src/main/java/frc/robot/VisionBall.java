@@ -33,12 +33,12 @@ public class VisionBall
     
     //Comp Robot
     private static final float CAMERA_HEIGHT = 14.6f;
-    private static final float CAMERA_TILT = 9.75f;
+    private static final float CAMERA_TILT = 9.6f;
     
     //Practice Robot
     // private static final float CAMERA_HEIGHT = 7.25f;
     // private static final float CAMERA_TILT = 12.35f;
-    private static final int RELATIVE_CENTER_X = 295; //TODO - Get actual center x
+    private static final int RELATIVE_CENTER_X = 305; //TODO - Get actual center x
     //Ball Physical Constants
     private static final float CENTER_BALL_HEIGHT = 3.5f;
 

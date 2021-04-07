@@ -37,17 +37,26 @@ public class AutoSlalom extends AutoBaseClass {
                     } 
                     break;
                 case 2://segment 2
-                   driveInches( 72, 0, 1);
+                    driveInches( 72, 0, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 3:
                     if (driveCompleted()) {
-                        advanceStep();
+                        setStep(40);
                     } 
+                    break;
+                case 40:
+                    turnToHeading(0,1);
+                    setTimerAndAdvanceStep(1000);
+                    break;
+                case 41:
+                    if (driveCompleted()) {
+                        setStep(4);
+                    }
                     break;
                 case 4://segment 3 
                     driveInches( 180, 90, 1);
-                     setTimerAndAdvanceStep(2000);
+                     setTimerAndAdvanceStep(3000);
                      break;
                 case 5:
                      if (driveCompleted()) {
@@ -55,7 +64,7 @@ public class AutoSlalom extends AutoBaseClass {
                      } 
                      break;
                 case 6://segment 4 
-                    driveInches( -64, 0, 1);
+                    driveInches(-74, 0, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 7:
@@ -73,7 +82,7 @@ public class AutoSlalom extends AutoBaseClass {
                     }
                     break;
                 case 10://segment 6 
-                    driveInches( 64, 0, 1);
+                    driveInches( 74, 0, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 11:
@@ -82,7 +91,7 @@ public class AutoSlalom extends AutoBaseClass {
                     }
                     break;
                 case 12://segment 7
-                    driveInches( 60, 270, 1);
+                    driveInches( 54, 270, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 13:
@@ -91,34 +100,34 @@ public class AutoSlalom extends AutoBaseClass {
                     }
                     break;
                 case 14://segment 8
-                    driveInches( -64, 0, 1);
-                    setTimerAndAdvanceStep(2000);
+                    driveInches( -83, 0, 1);
+                    setTimerAndAdvanceStep(3000);
                     break;
                 case 15:
                     if (driveCompleted()) {
                         advanceStep();
                     }
                     break;
-                case 16://segment 9 
-                    driveInches(  180, 270, 1);
-                    setTimerAndAdvanceStep(2000);
+                case 16:
+                    turnToHeading(0,1);
+                    setTimerAndAdvanceStep(1000);
                     break;
                 case 17:
-                    if (driveCompleted()) {
-                        advanceStep();
-                    }
-                    break;
-                case 18://segment 10 
-                    driveInches( 64, 0, 1);
-                    setTimerAndAdvanceStep(2000);
+                if (driveCompleted()) {
+                    advanceStep();
+                }
+                break;
+                case 18://segment 9 
+                    driveInches(  180, 270, 1);
+                    setTimerAndAdvanceStep(3000);
                     break;
                 case 19:
                     if (driveCompleted()) {
                         advanceStep();
                     }
                     break;
-                case 20://segment 11
-                    driveInches( 62, 270, 1);
+                case 20://segment 10 
+                    driveInches( 78, 0, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 21:
@@ -126,7 +135,16 @@ public class AutoSlalom extends AutoBaseClass {
                         advanceStep();
                     }
                     break;
-                case 22:
+                case 22://segment 11
+                    driveInches( 62, 270, 1);
+                    setTimerAndAdvanceStep(2000);
+                    break;
+                case 23:
+                    if (driveCompleted()) {
+                        advanceStep();
+                    }
+                    break;
+                case 24:
                     stop();
                     break;
             } 

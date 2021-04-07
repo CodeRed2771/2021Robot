@@ -2,12 +2,12 @@ package frc.robot;
 
 class ShooterCalibration {
   public static double[] shooterPivoterArray = { 
-      0.00000000,  // 0 // NEEDS TO BE MORE ACCURATE
-      0.00000000,  // 1 // NEEDS TO BE MORE ACCURATE
-      0.00000000,  // 2 // NEEDS TO BE MORE ACCURATE
-      0.00000000,  // 3 // NEEDS TO BE MORE ACCURATE
-      0.00000000,  // 4 // NEEDS TO BE MORE ACCURATE
-      0.00000000,  // 5 // NEEDS TO BE MORE ACCURATE
+      -0.1000000,  // 0 // NEEDS TO BE MORE ACCURATE
+      -0.150000000,  // 1 // NEEDS TO BE MORE ACCURATE
+      -0.1500000,  // 2 // NEEDS TO BE MORE ACCURATE
+      -0.22000000,  // 3 // NEEDS TO BE MORE ACCURATE
+      -0.22000000,  // 4 // NEEDS TO BE MORE ACCURATE
+      -0.22000000,  // 5 // NEEDS TO BE MORE ACCURATE
       0.01000000,  // 6
       0.06097561,  // 7 
       0.20201219,  // 8 

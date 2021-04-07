@@ -45,23 +45,23 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 {
                     setStep(50);
                 }
+                else if (mAutoBallPickUp.getDegreesOffBall() > - 4)
+                {
+                    setStep(90);
+                }
                 else
                 {
                     setStep(70);
                 }
-                // else
-                // {
-                //     setStep(90);
-                // }
-                // break;
+                break;
 // ----------------------------------------------------------------------------------------------------------------------------------
 // BLUE PATH
 // ----------------------------------------------------------------------------------------------------------------------------------
 
 // BOTH PATH A AND B
             case 50:
-                driveInches(100, 0, 1);
-                setTimerAndAdvanceStep(3000);
+                driveInches(90, 0, 1);
+                setTimerAndAdvanceStep(2000);
                 break;
             case 51:
                 if (driveCompleted())
@@ -70,7 +70,7 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 }
                 break;
             case 52:
-                turnDegrees(45, 1);
+                turnToHeading(50, 1);
                 setTimerAndAdvanceStep(1000);
                 break;
             case 53:
@@ -91,8 +91,15 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 }
                 break;
             case 56:
-                turnToHeading(340, 1);
-                setTimerAndAdvanceStep(2000);
+                if (mAutoBallPickUp.getDegreesOffBall() > 0)
+                {
+                    turnToHeading(300, 1);
+                    setTimerAndAdvanceStep(1500);
+                }
+                else 
+                {
+                    setStep(120);
+                }
                 break;
             case 57:
                 if (driveCompleted())
@@ -112,8 +119,8 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 }
                 break;
             case 60:
-                turnToHeading(20, 1);
-                setTimerAndAdvanceStep(2000);
+                turnToHeading(10, 1);
+                setTimerAndAdvanceStep(1500);
                 break;
             case 61:
                 if (driveCompleted())
@@ -143,7 +150,7 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 }
                 break;
             case 66:
-                driveInches(60, 0, 1);
+                driveInches(80, 0, 1);
                 setTimerAndAdvanceStep(3000);
                 break;
             case 67:
@@ -187,6 +194,7 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 {
                     advanceStep();
                 }
+                break;
             case 76:
                 mAutoBallPickUp.start();
                 advanceStep();
@@ -209,7 +217,7 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 }
                 break;
             case 80:
-                driveInches(126, 0, 1);
+                driveInches(160, 0, 1);
                 setTimerAndAdvanceStep(6000);
                 break;
             case 81:
@@ -245,7 +253,7 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 }
                 break;
             case 96:
-                turnToHeading(290, 1);
+                turnToHeading(310, 1);
                 setTimerAndAdvanceStep(3000);
                 break;
             case 97:
@@ -276,7 +284,7 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 }
                 break;
             case 102:
-                driveInches(132, 0, 1);
+                driveInches(145, 0, 1);
                 setTimerAndAdvanceStep(5000);
                 break;
             case 103:
@@ -287,6 +295,70 @@ public class AutoBallAtHomeChallenge extends AutoBaseClass {
                 break;
                 
 // -----------------------------------------------------------------------------------------------------------------------------------
+// blue path b
+            case 120:
+                turnToHeading(330, 1);
+                setTimerAndAdvanceStep(2000);
+                break;
+            case 121:
+                if (driveCompleted())
+                {
+                    advanceStep();
+                }
+                break;
+            case 122:
+                mAutoBallPickUp.start();
+                advanceStep();
+                break;
+            case 123:
+                mAutoBallPickUp.tick(); 
+                if (mAutoBallPickUp.ballCollected())
+                {
+                    advanceStep();
+                }
+                break;
+            case 124:
+                turnToHeading(35, 1);
+                setTimerAndAdvanceStep(1500);
+                break;
+            case 125:
+                if (driveCompleted())
+                {
+                    advanceStep();
+                }
+                break;
+            case 126:
+                mAutoBallPickUp.start();
+                advanceStep();
+                break;
+            case 127:
+                mAutoBallPickUp.tick();
+                if (mAutoBallPickUp.ballCollected())
+                {
+                    advanceStep();
+                }
+                break;
+            case 128:
+                turnToHeading(0, 1);
+                setTimerAndAdvanceStep(1000);
+                break;
+            case 129: 
+                if (driveCompleted())
+                {
+                    advanceStep();
+                }
+                break;
+            case 130:
+                driveInches(60, 0, 1);
+                setTimerAndAdvanceStep(3000);
+                break;
+            case 131:
+                if (driveCompleted())
+                {
+                    setStep(1000);
+                }                
+                break;
+// ------------------------------------------------------------------------------------------------------------------------------
             case 1000:
                 stop();
                 break;
