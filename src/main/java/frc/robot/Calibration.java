@@ -49,10 +49,10 @@ public class Calibration {
     public final static double VISION_ROT_I = 0;
     public final static double VISION_ROT_D = 0;
 
-    public final static double TURN_P = 7;
+    public final static double TURN_P = 14.6;
     public final static double TURN_I = 0.007;
     public final static int TURN_I_ZONE = 40;
-    public final static double TURN_D = 0;
+    public final static double TURN_D = 550;
 
     public final static double TURN_F = 0;
 
