@@ -27,7 +27,7 @@ public class AutoSlalom extends AutoBaseClass {
             SmartDashboard.putNumber("Auto Step", getCurrentStep());
 
             switch (getCurrentStep()) {
-                case 0://segment 1 
+                case 0://segment 1 - drive left
                     driveInches(72, 90, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
@@ -36,9 +36,9 @@ public class AutoSlalom extends AutoBaseClass {
                         advanceStep();
                     } 
                     break;
-                case 2://segment 2
+                case 2://segment 2 - drive forward
                     driveInches( 72, 0, 1);
-                    setTimerAndAdvanceStep(2000);
+                    setTimerAndAdvanceStep(3000);
                     break;
                 case 3:
                     if (driveCompleted()) {
@@ -46,7 +46,7 @@ public class AutoSlalom extends AutoBaseClass {
                     } 
                     break;
                 case 40:
-                    turnToHeading(0,1);
+                    turnDegrees(-RobotGyro.getAngle(),1);
                     setTimerAndAdvanceStep(1000);
                     break;
                 case 41:
@@ -54,17 +54,17 @@ public class AutoSlalom extends AutoBaseClass {
                         setStep(4);
                     }
                     break;
-                case 4://segment 3 
+                case 4://segment 3 - slide right across field
                     driveInches( 180, 90, 1);
-                     setTimerAndAdvanceStep(3000);
+                     setTimerAndAdvanceStep(4000);
                      break;
                 case 5:
                      if (driveCompleted()) {
                          advanceStep();
                      } 
                      break;
-                case 6://segment 4 
-                    driveInches(-74, 0, 1);
+                case 6://segment 4 - 
+                    driveInches(-74 - DistanceSensor.adjustmentInches(72, 24), 0, 1);
                     setTimerAndAdvanceStep(2000);
                     break;
                 case 7:
@@ -100,7 +100,7 @@ public class AutoSlalom extends AutoBaseClass {
                     }
                     break;
                 case 14://segment 8
-                    driveInches( -83, 0, 1);
+                    driveInches( -74 - DistanceSensor.adjustmentInches(72, 24), 0, 1);
                     setTimerAndAdvanceStep(3000);
                     break;
                 case 15:
@@ -109,7 +109,7 @@ public class AutoSlalom extends AutoBaseClass {
                     }
                     break;
                 case 16:
-                    turnToHeading(0,1);
+                    turnDegrees(-RobotGyro.getAngle(),1);
                     setTimerAndAdvanceStep(1000);
                     break;
                 case 17:
