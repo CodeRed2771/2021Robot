@@ -59,7 +59,7 @@ public class Robot extends TimedRobot {
 		ColorSensorAndTraverser.getInstance();
 		Vision.getInstance();
 		VisionBall.SetUpBallVision();
-
+		DistanceSensor.getInstance();
 		setupAutoChoices();
 		mAutoProgram = new AutoDoNothing();
 
@@ -246,6 +246,9 @@ public class Robot extends TimedRobot {
 		DriveAuto.tick();
 		Climber.tick();
 		ColorSensorAndTraverser.tick();
+
+		SmartDashboard.putNumber("Gyro", RobotGyro.getAngle());
+		SmartDashboard.putNumber("US Distance", DistanceSensor.GetInches());
 
 		 // Sets the PID values based on input from the SmartDashboard
         // This is only needed during tuning
