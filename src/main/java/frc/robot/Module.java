@@ -16,7 +16,7 @@ public class Module {
     private final CANPIDController drivePID;
     private final CANEncoder driveEncoder;
     private final char mModuleID;
-    private final int FULL_ROTATION = 1024;
+    private final int FULL_ROTATION = 4096;
     private final double TURN_P, TURN_I, TURN_D, TURN_F, DRIVE_P, DRIVE_I, DRIVE_D;
     private final int TURN_IZONE, DRIVE_IZONE;
     private double turnZeroPos = 0;
@@ -80,7 +80,7 @@ public class Module {
 
         turnZeroPos = tZeroPos;
 
-        turn.configSelectedFeedbackSensor(FeedbackDevice.Analog, 0, 0); // ?? don't know if zeros are right
+        turn.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0); // ?? don't know if zeros are right
         TURN_P = tP;
         TURN_I = tI;
         TURN_D = tD;
@@ -148,7 +148,7 @@ public class Module {
      * @return turn encoder absolute position
      */
     public double getTurnAbsolutePosition() {
-        return (turn.getSensorCollection().getAnalogInRaw() & 0x3FF) / 1024d;
+        return (turn.getSensorCollection().getPulseWidthPosition() & 0xFFF) / 4096d;
     }
 
     public double getTurnPosition() {
