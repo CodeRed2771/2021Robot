@@ -49,12 +49,21 @@ public class Calibration {
     public final static double VISION_ROT_I = 0;
     public final static double VISION_ROT_D = 0;
 
-    public final static double TURN_P = 14.6;
+    /*
+     * LAMPREY VERSION
+     public final static double TURN_P = 14.6;
     public final static double TURN_I = 0.007;
     public final static int TURN_I_ZONE = 40;
     public final static double TURN_D = 550;
 
     public final static double TURN_F = 0;
+    */
+   
+    public final static double TURN_P = 13; //was 10 3.10.19
+	public final static double TURN_I = 0.01;
+	public final static double TURN_D = 400;
+    public final static double TURN_I_ZONE = 40; // 8/10/21 this was not set, so it's not right
+    public final static double TURN_F = 0;    // 8/10/21 this was also not used before but could be helpful
 
     // Physical Module - A
     public final static int DT_A_DRIVE_SPARK_ID = 2;
@@ -98,11 +107,11 @@ public class Calibration {
     public final static double DT_ROT_PID_D = .000;
     public final static double DT_ROT_PID_IZONE = 18;
 
-    public final static int DT_MM_ACCEL = 4000;
-    public final static int DT_MM_VELOCITY = 10000;
-
-    // COMPETITION AND PRACTICE
-    public static final double DRIVE_DISTANCE_TICKS_PER_INCH = .418;
+	public final static int DT_MM_ACCEL = 300;
+	public final static int DT_MM_VELOCITY = 450;
+	
+	// COMPETIION AND PRACTICE
+	public static final double DRIVE_DISTANCE_TICKS_PER_INCH = 42.66;  
 
     // TEST BOT2
     // public static final double DRIVE_DISTANCE_TICKS_PER_INCH = 32.900;

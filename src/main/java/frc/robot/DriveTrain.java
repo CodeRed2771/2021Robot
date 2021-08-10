@@ -29,24 +29,40 @@ public class DriveTrain {
     private static final double l = 29, w = 18, r = Math.sqrt((l * l) + (w * w));
 
     private DriveTrain() {
+       
         moduleA = new Module(Calibration.DT_A_DRIVE_SPARK_ID, Calibration.DT_A_TURN_TALON_ID, Calibration.AUTO_DRIVE_P,
-                Calibration.AUTO_DRIVE_I, Calibration.AUTO_DRIVE_D, Calibration.AUTO_DRIVE_IZONE, Calibration.TURN_P,
-                Calibration.TURN_I, Calibration.TURN_D, Calibration.TURN_I_ZONE, Calibration.TURN_F, Calibration.GET_DT_A_ABS_ZERO(), 'A'); // Front left
+        Calibration.AUTO_DRIVE_I, Calibration.AUTO_DRIVE_D, Calibration.AUTO_DRIVE_IZONE, Calibration.TURN_P,
+        Calibration.TURN_I, Calibration.TURN_D, 200, Calibration.GET_DT_A_ABS_ZERO(), 'A'); // Front right
         moduleB = new Module(Calibration.DT_B_DRIVE_SPARK_ID, Calibration.DT_B_TURN_TALON_ID, Calibration.AUTO_DRIVE_P,
-                Calibration.AUTO_DRIVE_I, Calibration.AUTO_DRIVE_D, Calibration.AUTO_DRIVE_IZONE, Calibration.TURN_P,
-                Calibration.TURN_I, Calibration.TURN_D, Calibration.TURN_I_ZONE, Calibration.TURN_F, Calibration.GET_DT_B_ABS_ZERO(), 'B'); // Back right
+        Calibration.AUTO_DRIVE_I, Calibration.AUTO_DRIVE_D, Calibration.AUTO_DRIVE_IZONE, Calibration.TURN_P,
+        Calibration.TURN_I, Calibration.TURN_D, 200, Calibration.GET_DT_B_ABS_ZERO(), 'B'); // Back left
         moduleC = new Module(Calibration.DT_C_DRIVE_SPARK_ID, Calibration.DT_C_TURN_TALON_ID, Calibration.AUTO_DRIVE_P,
-                Calibration.AUTO_DRIVE_I, Calibration.AUTO_DRIVE_D, Calibration.AUTO_DRIVE_IZONE, Calibration.TURN_P,
-                Calibration.TURN_I, Calibration.TURN_D, Calibration.TURN_I_ZONE, Calibration.TURN_F, Calibration.GET_DT_C_ABS_ZERO(), 'C'); // Back left
+        Calibration.AUTO_DRIVE_I, Calibration.AUTO_DRIVE_D, Calibration.AUTO_DRIVE_IZONE, Calibration.TURN_P,
+        Calibration.TURN_I, Calibration.TURN_D, 200, Calibration.GET_DT_C_ABS_ZERO(),'C'); // Back right
         moduleD = new Module(Calibration.DT_D_DRIVE_SPARK_ID, Calibration.DT_D_TURN_TALON_ID, Calibration.AUTO_DRIVE_P,
-                Calibration.AUTO_DRIVE_I, Calibration.AUTO_DRIVE_D, Calibration.AUTO_DRIVE_IZONE, Calibration.TURN_P,
-                Calibration.TURN_I, Calibration.TURN_D, Calibration.TURN_I_ZONE, Calibration.TURN_F, Calibration.GET_DT_D_ABS_ZERO(), 'D'); // Front right
+        Calibration.AUTO_DRIVE_I, Calibration.AUTO_DRIVE_D, Calibration.AUTO_DRIVE_IZONE, Calibration.TURN_P,
+        Calibration.TURN_I, Calibration.TURN_D, 200, Calibration.GET_DT_D_ABS_ZERO(),'D'); // Front left
 
+/*
+ * LAMPREY ENCODER VERSION
+ *      moduleA = new Module(Calibration.DT_A_DRIVE_SPARK_ID, Calibration.DT_A_TURN_TALON_ID, Calibration.AUTO_DRIVE_P,
+ *               Calibration.AUTO_DRIVE_I, Calibration.AUTO_DRIVE_D, Calibration.AUTO_DRIVE_IZONE, Calibration.TURN_P,
+ *               Calibration.TURN_I, Calibration.TURN_D, Calibration.TURN_I_ZONE, Calibration.TURN_F, Calibration.GET_DT_A_ABS_ZERO(), 'A'); // Front left
+ *       moduleB = new Module(Calibration.DT_B_DRIVE_SPARK_ID, Calibration.DT_B_TURN_TALON_ID, Calibration.AUTO_DRIVE_P,
+ *               Calibration.AUTO_DRIVE_I, Calibration.AUTO_DRIVE_D, Calibration.AUTO_DRIVE_IZONE, Calibration.TURN_P,
+ *               Calibration.TURN_I, Calibration.TURN_D, Calibration.TURN_I_ZONE, Calibration.TURN_F, Calibration.GET_DT_B_ABS_ZERO(), 'B'); // Back right
+ *       moduleC = new Module(Calibration.DT_C_DRIVE_SPARK_ID, Calibration.DT_C_TURN_TALON_ID, Calibration.AUTO_DRIVE_P,
+ *               Calibration.AUTO_DRIVE_I, Calibration.AUTO_DRIVE_D, Calibration.AUTO_DRIVE_IZONE, Calibration.TURN_P,
+ *               Calibration.TURN_I, Calibration.TURN_D, Calibration.TURN_I_ZONE, Calibration.TURN_F, Calibration.GET_DT_C_ABS_ZERO(), 'C'); // Back left
+ *       moduleD = new Module(Calibration.DT_D_DRIVE_SPARK_ID, Calibration.DT_D_TURN_TALON_ID, Calibration.AUTO_DRIVE_P,
+ *               Calibration.AUTO_DRIVE_I, Calibration.AUTO_DRIVE_D, Calibration.AUTO_DRIVE_IZONE, Calibration.TURN_P,
+ *               Calibration.TURN_I, Calibration.TURN_D, Calibration.TURN_I_ZONE, Calibration.TURN_F, Calibration.GET_DT_D_ABS_ZERO(), 'D'); // Front right
+*/
         SmartDashboard.putNumber("TURN P", Calibration.TURN_P);
         SmartDashboard.putNumber("TURN I", Calibration.TURN_I);
         SmartDashboard.putNumber("TURN D", Calibration.TURN_D);
-        SmartDashboard.putNumber("TURN I ZONE", Calibration.TURN_I_ZONE);
-        SmartDashboard.putNumber("TURN F", Calibration.TURN_F);
+     //   SmartDashboard.putNumber("TURN I ZONE", Calibration.TURN_I_ZONE);
+     //   SmartDashboard.putNumber("TURN F", Calibration.TURN_F);
     }
 
     public static void setDrivePower(double modAPower, double modBPower, double modCPower, double modDPower) {
@@ -359,10 +375,10 @@ public class DriveTrain {
         SmartDashboard.putNumber("Mod C Drive Enc", moduleC.getDriveEnc());
         SmartDashboard.putNumber("Mod D Drive Enc", moduleD.getDriveEnc());
 
-        SmartDashboard.putNumber("Mod A Drive Setpt", moduleA.getCurrentDriveSetpoint());
-        SmartDashboard.putNumber("Mod B Drive Setpt", moduleB.getCurrentDriveSetpoint());
-        SmartDashboard.putNumber("Mod C Drive Setpt", moduleC.getCurrentDriveSetpoint());
-        SmartDashboard.putNumber("Mod D Drive Setpt", moduleD.getCurrentDriveSetpoint());
+        // SmartDashboard.putNumber("Mod A Drive Setpt", moduleA.getCurrentDriveSetpoint());
+        // SmartDashboard.putNumber("Mod B Drive Setpt", moduleB.getCurrentDriveSetpoint());
+        // SmartDashboard.putNumber("Mod C Drive Setpt", moduleC.getCurrentDriveSetpoint());
+        // SmartDashboard.putNumber("Mod D Drive Setpt", moduleD.getCurrentDriveSetpoint());
     }
 
     public static void showTurnEncodersOnDash() {
@@ -444,7 +460,7 @@ public class DriveTrain {
         moduleD.setDrivePIDValues(p, i, d, f);
     }
 
-    public static void setTurnPIDValues(double p, double i, double d, int iZone, double f) {
+    public static void setTurnPIDValues(double p, double i, double d, double iZone, double f) {
         if (getInstance() == null)
             return;
 
