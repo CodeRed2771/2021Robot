@@ -59,9 +59,9 @@ public class Calibration {
     public final static double TURN_F = 0;
     */
    
-    public final static double TURN_P = 13; //was 10 3.10.19
-	public final static double TURN_I = 0.01;
-	public final static double TURN_D = 400;
+    public final static double TURN_P = 3; //was 10 3.10.19
+	public final static double TURN_I = 0.0; // was .01
+	public final static double TURN_D = 0; // was 400
     public final static double TURN_I_ZONE = 40; // 8/10/21 this was not set, so it's not right
     public final static double TURN_F = 0;    // 8/10/21 this was also not used before but could be helpful
 

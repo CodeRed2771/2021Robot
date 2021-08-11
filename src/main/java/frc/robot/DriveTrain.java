@@ -294,10 +294,16 @@ public class DriveTrain {
             // to tell the encoder what the current relative position is
             // (relative to the
             // zero pos)
-            moduleA.setEncPos((int) (calculatePositionDifference(modAOff, Calibration.GET_DT_A_ABS_ZERO()) * 1024d));
-            moduleB.setEncPos((int) (calculatePositionDifference(modBOff, Calibration.GET_DT_B_ABS_ZERO()) * 1024d));
-            moduleC.setEncPos((int) (calculatePositionDifference(modCOff, Calibration.GET_DT_C_ABS_ZERO()) * 1024d));
-            moduleD.setEncPos((int) (calculatePositionDifference(modDOff, Calibration.GET_DT_D_ABS_ZERO()) * 1024d));
+			moduleA.setEncPos((int) (calculatePositionDifference(modAOff, Calibration.GET_DT_A_ABS_ZERO()) * 4096d));
+			moduleB.setEncPos((int) (calculatePositionDifference(modBOff, Calibration.GET_DT_B_ABS_ZERO()) * 4096d));
+			moduleC.setEncPos((int) (calculatePositionDifference(modCOff, Calibration.GET_DT_C_ABS_ZERO()) * 4096d));
+			moduleD.setEncPos((int) (calculatePositionDifference(modDOff, Calibration.GET_DT_D_ABS_ZERO()) * 4096d));
+
+            // Lamprey version
+            // moduleA.setEncPos((int) (calculatePositionDifference(modAOff, Calibration.GET_DT_A_ABS_ZERO()) * 1024d));
+            // moduleB.setEncPos((int) (calculatePositionDifference(modBOff, Calibration.GET_DT_B_ABS_ZERO()) * 1024d));
+            // moduleC.setEncPos((int) (calculatePositionDifference(modCOff, Calibration.GET_DT_C_ABS_ZERO()) * 1024d));
+            // moduleD.setEncPos((int) (calculatePositionDifference(modDOff, Calibration.GET_DT_D_ABS_ZERO()) * 1024d));
 
             allowTurnEncoderReset = false;
         }
@@ -405,7 +411,9 @@ public class DriveTrain {
         SmartDashboard.putNumber("TURN A ERR", moduleA.getTurnError());
         SmartDashboard.putNumber("TURN B ERR", moduleB.getTurnError());
         SmartDashboard.putNumber("TURN C ERR", moduleC.getTurnError());
-        SmartDashboard.putNumber("TURN D ERR", moduleD.getTurnError());
+		SmartDashboard.putNumber("TURN D ERR", moduleD.getTurnError());
+		
+		SmartDashboard.putNumber("TURN A SETPOINT", moduleA.getTurnSetpoint());
     }
 
     public static void humanDrive(double fwd, double str, double rot) {

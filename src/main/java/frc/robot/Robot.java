@@ -69,7 +69,7 @@ public class Robot extends TimedRobot {
 		DriveTrain.allowTurnEncoderReset();
 		DriveTrain.resetTurnEncoders(); // sets encoders based on absolute encoder positions
 
-		SmartDashboard.putBoolean("Show Encoders", false);
+		SmartDashboard.putBoolean("Show Encoders", true);
 		SmartDashboard.putBoolean("Tune Drive-Turn PIDs", false);
 	}
 
@@ -123,9 +123,9 @@ public class Robot extends TimedRobot {
 		if (gamepad.stopShooter() || gamepad.stopShooting()) {
 			Shooter.StopShooter();
 		}
-		if (gamepad.lowClimberHeight() && gamepad.stopIntake()) {
-			Climber.extendHook();
-		}
+		// if (gamepad.lowClimberHeight() && gamepad.stopIntake()) {
+		// 	Climber.extendHook();
+		// }
 		// if (gamepad.colorWheelClimberHeight()) {
 		// 	Climber.setColorWheelClimberPosition();
 		// }
@@ -171,12 +171,12 @@ public class Robot extends TimedRobot {
 			ShooterPivoter.moveToSetPoint(gamepad.shooterPivoterAdjuster());	 // THIS FUNCTIONS NEED TO BE IMPROVISED
 																				// BASED ON WHAT WE ARE GIVEN
 		}
-		if (Math.abs(gamepad.manualClimberAdjuster()) > 0.1) {
-			Climber.adjustExtendedHook(gamepad.manualClimberAdjuster());
-		}
-		if (gamepad.oneShotShooter() && gamepad.continualShooter()) {
-			Climber.liftRobot(gamepad.liftSpeed());
-		}
+		// if (Math.abs(gamepad.manualClimberAdjuster()) > 0.1) {
+		// 	Climber.adjustExtendedHook(gamepad.manualClimberAdjuster());
+		// }
+		// if (gamepad.oneShotShooter() && gamepad.continualShooter()) {
+		// 	Climber.liftRobot(gamepad.liftSpeed());
+		// }
 		if (gamepad.turn180Degrees()) {
 			DriveAuto.turnDegrees(180, 1);
 		}
@@ -244,7 +244,7 @@ public class Robot extends TimedRobot {
 		Shooter.tick();
 		ShooterPivoter.tick();
 		DriveAuto.tick();
-		Climber.tick();
+		// Climber.tick();
 		ColorSensorAndTraverser.tick();
 
 		SmartDashboard.putNumber("Gyro", RobotGyro.getAngle());
@@ -253,7 +253,8 @@ public class Robot extends TimedRobot {
 		 // Sets the PID values based on input from the SmartDashboard
         // This is only needed during tuning
         // if (SmartDashboard.getBoolean("Tune Drive-Turn PIDs", false)) {
-            DriveTrain.setDrivePIDValues(SmartDashboard.getNumber("AUTO DRIVE P", Calibration.AUTO_DRIVE_P),
+       
+					DriveTrain.setDrivePIDValues(SmartDashboard.getNumber("AUTO DRIVE P", Calibration.AUTO_DRIVE_P),
                     SmartDashboard.getNumber("AUTO DRIVE I", Calibration.AUTO_DRIVE_I),
                     SmartDashboard.getNumber("AUTO DRIVE D", Calibration.AUTO_DRIVE_D),
                     SmartDashboard.getNumber("AUTO DRIVE F", Calibration.AUTO_DRIVE_F));
@@ -472,7 +473,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("Gyro Relative", round2(RobotGyro.getRelativeAngle()));
 		SmartDashboard.putNumber("Gyro Raw", round2(RobotGyro.getAngle()));
 
-		if (SmartDashboard.getBoolean("Show Encoders", false)) {
+		if (SmartDashboard.getBoolean("Show Encoders", true)) {
 			DriveTrain.showTurnEncodersOnDash();
 			DriveTrain.showDriveEncodersOnDash();
 		}

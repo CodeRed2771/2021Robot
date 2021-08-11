@@ -226,7 +226,7 @@ public class DriveAuto {
     public static void tick() {
         // this is called roughly 50 times per second
 
-        SmartDashboard.putBoolean("HasArrived", hasArrived());
+        // SmartDashboard.putBoolean("HasArrived", hasArrived());
         SmartDashboard.putBoolean("TurnCompleted", turnCompleted());
         // SmartDashboard.putNumber("Drive PID Error", DriveTrain.getDriveError());
 

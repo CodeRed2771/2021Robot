@@ -90,8 +90,9 @@ public class Module {
 		turn.config_kD(0, TURN_D, 0);
 		turn.config_IntegralZone(0, TURN_IZONE, 0);
 		turn.selectProfileSlot(0, 0);
-
 		turn.configClosedloopRamp(.1, 0);
+		turn.setInverted(InvertType.InvertMotorOutput);
+		
 	}
 
 	// public void setFollower(int talonToFollow) {
@@ -114,7 +115,7 @@ public class Module {
 	// }
 
 	/**
-	 * getModuleLetter
+	 * getModuleLetters
 	 * @return a single character, A,B,C,D indicating which module this is
 	 */
 	public char getModuleLetter() {
@@ -354,6 +355,10 @@ public class Module {
 
 	public double getTurnError() {
 		return turn.getClosedLoopError(0);
+	}
+
+	public double getTurnSetpoint() {
+		return turn.getClosedLoopTarget(0);
 	}
 
 	// public double getDriveError() {
