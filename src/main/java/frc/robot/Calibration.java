@@ -32,10 +32,10 @@ public class Calibration {
 	
     // COMPETIION
 
-    private final static double DT_A_ABS_ZERO_INITIAL = .437; // .277; // COMPEITION
-    private final static double DT_B_ABS_ZERO_INITIAL = .860; // .554;
-    private final static double DT_C_ABS_ZERO_INITIAL = .481; // .042;
-    private final static double DT_D_ABS_ZERO_INITIAL = .755; // .924;
+    private final static double DT_A_ABS_ZERO_INITIAL = .463; // .277; // COMPEITION
+    private final static double DT_B_ABS_ZERO_INITIAL = .756; // .554;
+    private final static double DT_C_ABS_ZERO_INITIAL = .434; // .042;
+    private final static double DT_D_ABS_ZERO_INITIAL = .858; // .924;
 
     public final static double VISION_FWD_P = 0.05;
     public final static double VISION_FWD_I = 0;
@@ -66,8 +66,8 @@ public class Calibration {
     public final static double TURN_F = 0;    // 8/10/21 this was also not used before but could be helpful
 
     // Physical Module - A
-    public final static int DT_A_DRIVE_SPARK_ID = 2;
-    public final static int DT_A_TURN_TALON_ID = 1;
+    public final static int DT_A_DRIVE_SPARK_ID = 3;
+    public final static int DT_A_TURN_TALON_ID = 4;
     private static double DT_A_ABS_ZERO = DT_A_ABS_ZERO_INITIAL;
 
     public static double GET_DT_A_ABS_ZERO() {
@@ -75,8 +75,8 @@ public class Calibration {
     }
 
     // Physical Module - B
-    public final static int DT_B_DRIVE_SPARK_ID = 7;
-    public final static int DT_B_TURN_TALON_ID = 8;
+    public final static int DT_B_DRIVE_SPARK_ID = 6;
+    public final static int DT_B_TURN_TALON_ID = 5;
     private static double DT_B_ABS_ZERO = DT_B_ABS_ZERO_INITIAL;
 
     public static double GET_DT_B_ABS_ZERO() {
@@ -84,8 +84,8 @@ public class Calibration {
     }
 
     // Physical Module - C
-    public final static int DT_C_DRIVE_SPARK_ID = 3;
-    public final static int DT_C_TURN_TALON_ID = 4;
+    public final static int DT_C_DRIVE_SPARK_ID = 2;
+    public final static int DT_C_TURN_TALON_ID = 1;
     private static double DT_C_ABS_ZERO = DT_C_ABS_ZERO_INITIAL;
 
     public static double GET_DT_C_ABS_ZERO() {
@@ -93,8 +93,8 @@ public class Calibration {
     }
 
     // Physical Module - D
-    public final static int DT_D_DRIVE_SPARK_ID = 6;
-    public final static int DT_D_TURN_TALON_ID = 5;
+    public final static int DT_D_DRIVE_SPARK_ID = 7;
+    public final static int DT_D_TURN_TALON_ID = 8;
     private static double DT_D_ABS_ZERO = DT_D_ABS_ZERO_INITIAL;
 
     public static double GET_DT_D_ABS_ZERO() {

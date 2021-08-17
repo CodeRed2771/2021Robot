@@ -213,7 +213,7 @@ public class Robot extends TimedRobot {
 		// above that have been tweaked as needed
 		double driveRotAmount = -gamepad.getSwerveRotAxis();
 		double driveFWDAmount = gamepad.getSwerveYAxis();
-		double driveStrafeAmount = gamepad.getSwerveXAxis();
+		double driveStrafeAmount = -gamepad.getSwerveXAxis();
 
 		// SmartDashboard.putNumber("SWERVE ROT AXIS", driveRotAmount);
 		driveRotAmount = rotationalAdjust(driveRotAmount);

@@ -29,8 +29,8 @@ public class AutoCalibrator extends AutoBaseClass {
             switch (getCurrentStep()) {
             case 0:
                 // turnDegrees(360, 1);
-                 driveInches(60, 270, 1);
-                setTimerAndAdvanceStep(2000);
+                 driveInches(120, 0, 1);
+                setTimerAndAdvanceStep(6000);
                 break;
             case 1:
                 if (driveCompleted()) {
