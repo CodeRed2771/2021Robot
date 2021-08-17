@@ -91,7 +91,7 @@ public class Module {
 		turn.config_IntegralZone(0, TURN_IZONE, 0);
 		turn.selectProfileSlot(0, 0);
 		turn.configClosedloopRamp(.1, 0);
-		turn.setSensorPhase(true);
+		//turn.setSensorPhase(true);
 		
 	}
 
