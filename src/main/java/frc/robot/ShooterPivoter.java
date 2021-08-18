@@ -47,8 +47,8 @@ public class ShooterPivoter {
             minPivotPosition = .796; // back position .... .828  PRACT
             maxPivotPosition = .837; // forward position .... .877
         } else {
-            minPivotPosition = .829; // back position .... .828  COMP
-            maxPivotPosition = .870; // forward position .... .877
+            minPivotPosition = .210; // back position .... .828  COMP
+            maxPivotPosition = .750; // forward position .... .877
         }
         
         // NOTE - none of this current limiting seems to work.
@@ -59,10 +59,11 @@ public class ShooterPivoter {
 
         throughBore = new DutyCycleEncoder(Wiring.SHOOTER_PIVOTER_DIO_ID); 
         throughBore.setConnectedFrequencyThreshold(900); 
-        positionPID = new PIDController(100,0,0);
+        positionPID = new PIDController(40,0,0);
+        positionPID.setTolerance(.075);
         // SmartDashboard.putNumber("SHOOTER SHAFT ADJUSTMENT", 0.5);
 
-        SmartDashboard.getNumber("ShootPivot pos", encoderPosition);
+        //SmartDashboard.getNumber("ShootPivot pos", encoderPosition);
     }
 
     public static ShooterPivoter getInstance () {
@@ -78,33 +79,39 @@ public class ShooterPivoter {
 
         // System.out.println("RAW COMMAND:" + targetShaftPosition);
 
-        if (encoderPosition >= maxPivotPosition + .02) {
-            targetShaftPosition = maxPivotPosition;
-        } else if (encoderPosition <= minPivotPosition - .05) {
-            targetShaftPosition = minPivotPosition;
-        }
+        // if (encoderPosition >= maxPivotPosition + .02) {
+        //     targetShaftPosition = maxPivotPosition;
+        // } else if (encoderPosition <= minPivotPosition - .05) {
+        //     targetShaftPosition = minPivotPosition;
+        // }
 
         double calculatedPower = positionPID.calculate(encoderPosition,targetShaftPosition/*getDesiredShaftPosition()*/);
 
         // System.out.println("filtered command:" + targetShaftPosition);
 
         SmartDashboard.putNumber("ShootPivot pos", encoderPosition);
-        SmartDashboard.putNumber("SP Targ",targetShaftPosition);
-        SmartDashboard.putNumber("SP Pwr", calculatedPower);
+        SmartDashboard.putNumber("ShootPivot err", positionPID.getPositionError());
+        SmartDashboard.putNumber("ShootPivot target",targetShaftPosition);
+        SmartDashboard.putNumber("ShootPivot pwr", calculatedPower);
         
-        if (Math.abs(calculatedPower) > .5) {
-            calculatedPower = .5 * Math.signum(calculatedPower);
+        if (Math.abs(calculatedPower) > .8) {
+            calculatedPower = .8 * Math.signum(calculatedPower);
         }
 
-        pivotMotor.set(ControlMode.PercentOutput, calculatedPower);
+        pivotMotor.set(ControlMode.PercentOutput, -calculatedPower);
 
     }
 
     public static double getShaftEncoderPosition() {
         double encValue ;
-        encValue = throughBore.get();
+        encValue = throughBore.get();  // e.g. 1.5 for 1 and half revolutions
+        SmartDashboard.putNumber("ShootPivot RAW", encValue);
+        if (encValue < 0) 
+            encValue = encValue + 1; // make it positive
+        encValue = Math.abs(encValue);
+        // if more than 1, remove the 1 or however many revolutions there were
         if (Math.abs(encValue)>=1) {
-            encValue = (Math.abs(encValue) * 1000 -  (((int) Math.abs(encValue)) * 1000)) /1000;
+            encValue = (encValue * 1000 -  (((int) encValue) * 1000)) /1000;
         }
         return encValue;
     }
@@ -138,17 +145,17 @@ public class ShooterPivoter {
         return shooterAtPosition;
     }
 
-    public static void moveToSetPoint (double direction) {  // NEED TO BE BETTER ADDS AND SETPOINTS
+    public static void manualMove (double direction) {  // NEED TO BE BETTER ADDS AND SETPOINTS
         
         double newSetpoint;
 
 		if (direction < 0) {
-			newSetpoint = getShaftEncoderPosition() - 0.0025;
+			newSetpoint = getShaftEncoderPosition() - 0.01;
 			if (newSetpoint < minPivotPosition) {
 				newSetpoint = minPivotPosition;
 			}
 		} else {
-			newSetpoint = getShaftEncoderPosition() + 0.0025;
+			newSetpoint = getShaftEncoderPosition() + 0.01;
 			if (newSetpoint > maxPivotPosition) {
 				newSetpoint = maxPivotPosition; 
 			}

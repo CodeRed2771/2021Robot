@@ -168,7 +168,7 @@ public class Robot extends TimedRobot {
 		// 	Climber.setIdealClimberPositionToDropBellyPan();
 		// }
 		if (Math.abs(gamepad.shooterPivoterAdjuster()) > 0.1) {
-			ShooterPivoter.moveToSetPoint(gamepad.shooterPivoterAdjuster());	 // THIS FUNCTIONS NEED TO BE IMPROVISED
+			ShooterPivoter.manualMove(gamepad.shooterPivoterAdjuster());	 // THIS FUNCTIONS NEED TO BE IMPROVISED
 																				// BASED ON WHAT WE ARE GIVEN
 		}
 		// if (Math.abs(gamepad.manualClimberAdjuster()) > 0.1) {
@@ -249,6 +249,7 @@ public class Robot extends TimedRobot {
 
 		SmartDashboard.putNumber("Gyro", RobotGyro.getAngle());
 		SmartDashboard.putNumber("US Distance", DistanceSensor.GetInches());
+		SmartDashboard.putNumber("ShootPivot pos", ShooterPivoter.getShaftEncoderPosition());
 
 		 // Sets the PID values based on input from the SmartDashboard
         // This is only needed during tuning
