@@ -35,20 +35,20 @@ public class ShooterPivoter {
 
     private static boolean shooterAtPosition = false;
 
-    private static double minPivotPosition;
-    private static double maxPivotPosition;
-    private static double targetShaftPosition = maxPivotPosition;
+    private static double lowShotPosition;
+    private static double highShotPosition;
+    private static double targetShaftPosition = highShotPosition;
 
     public ShooterPivoter () {
         pivotMotor = new WPI_TalonSRX(Wiring.SHOOTER_PIVOT_MOTOR_ID);
-        pivotMotor.setInverted(InvertType.None);
+        pivotMotor.setInverted(InvertType.InvertMotorOutput);
 
         if (Calibration.isPracticeBot()) {
-            minPivotPosition = .796; // back position .... .828  PRACT
-            maxPivotPosition = .837; // forward position .... .877
+            lowShotPosition = .796; // forward position .... .828  PRACT
+            highShotPosition = .837; // back position .... .877
         } else {
-            minPivotPosition = .210; // back position .... .828  COMP
-            maxPivotPosition = .750; // forward position .... .877
+            lowShotPosition = .290; // forward position .... .828  COMP
+            highShotPosition = .670; // back position .... .877
         }
         
         // NOTE - none of this current limiting seems to work.
@@ -59,7 +59,7 @@ public class ShooterPivoter {
 
         throughBore = new DutyCycleEncoder(Wiring.SHOOTER_PIVOTER_DIO_ID); 
         throughBore.setConnectedFrequencyThreshold(900); 
-        positionPID = new PIDController(40,0,0);
+        positionPID = new PIDController(20,0,0,20);
         positionPID.setTolerance(.075);
         // SmartDashboard.putNumber("SHOOTER SHAFT ADJUSTMENT", 0.5);
 
@@ -85,39 +85,61 @@ public class ShooterPivoter {
         //     targetShaftPosition = minPivotPosition;
         // }
 
-        double calculatedPower = positionPID.calculate(encoderPosition,targetShaftPosition/*getDesiredShaftPosition()*/);
+        double calculatedPower = positionPID.calculate(encoderPosition,targetShaftPosition);
 
         // System.out.println("filtered command:" + targetShaftPosition);
+
+        if (Math.abs(calculatedPower) > .8) {
+            calculatedPower = .8 * Math.signum(calculatedPower);
+        }
+
+        if (encoderPosition > highShotPosition + .05 && calculatedPower > 0)
+            calculatedPower = 0;
+        if (encoderPosition < lowShotPosition - .05 && calculatedPower < 0) 
+            calculatedPower = 0;
+        if (encoderPosition == 0) // we probably lost the connection
+            calculatedPower = 0;
 
         SmartDashboard.putNumber("ShootPivot pos", encoderPosition);
         SmartDashboard.putNumber("ShootPivot err", positionPID.getPositionError());
         SmartDashboard.putNumber("ShootPivot target",targetShaftPosition);
         SmartDashboard.putNumber("ShootPivot pwr", calculatedPower);
+           
+        pivotMotor.set(ControlMode.PercentOutput, calculatedPower);
+
+    }
+
+    private static double removeRotations(double encoderValue) {
+        // if more than 1, remove the 1 or however many revolutions there were
         
-        if (Math.abs(calculatedPower) > .8) {
-            calculatedPower = .8 * Math.signum(calculatedPower);
-        }
+        if (encoderValue < 0) 
+            encoderValue = encoderValue * -1;
 
-        pivotMotor.set(ControlMode.PercentOutput, -calculatedPower);
+        encoderValue = (encoderValue * 1000 -  (((int) encoderValue) * 1000)) /1000;
 
+        return encoderValue;
     }
 
     public static double getShaftEncoderPosition() {
         double encValue ;
         encValue = throughBore.get();  // e.g. 1.5 for 1 and half revolutions
         SmartDashboard.putNumber("ShootPivot RAW", encValue);
-        if (encValue < 0) 
-            encValue = encValue + 1; // make it positive
-        encValue = Math.abs(encValue);
-        // if more than 1, remove the 1 or however many revolutions there were
-        if (Math.abs(encValue)>=1) {
-            encValue = (encValue * 1000 -  (((int) encValue) * 1000)) /1000;
-        }
+        
+        if (encValue <= 0 || encValue >= 1)
+            throughBore.reset();
+
+        // if (encValue < 0) 
+        //     encValue = encValue + 1; // make it positive
+        // encValue = Math.abs(encValue);
+        // // if more than 1, remove the 1 or however many revolutions there were
+        // if (Math.abs(encValue)>=1) {
+        //     encValue = (encValue * 1000 -  (((int) encValue) * 1000)) /1000;
+        // }
         return encValue;
     }
 
     public static void resetPivoter() {
-        targetShaftPosition = maxPivotPosition; // max is forward
+        targetShaftPosition = lowShotPosition; // low is forward
     }
 
     public static void shootClosePosition () {
@@ -137,7 +159,7 @@ public class ShooterPivoter {
     }
 
     public static void setDesiredShootPosition (double desiredPosition) {
-        targetShaftPosition = minPivotPosition + ((maxPivotPosition - minPivotPosition) * desiredPosition);
+        targetShaftPosition = lowShotPosition + ((highShotPosition - lowShotPosition) * desiredPosition);
         SmartDashboard.putNumber("desiredPosition", desiredPosition);
     }
 
@@ -150,18 +172,22 @@ public class ShooterPivoter {
         double newSetpoint;
 
 		if (direction < 0) {
-			newSetpoint = getShaftEncoderPosition() - 0.01;
-			if (newSetpoint < minPivotPosition) {
-				newSetpoint = minPivotPosition;
+			newSetpoint = getShaftEncoderPosition() - 0.03;
+			if (newSetpoint < lowShotPosition) {
+				newSetpoint = lowShotPosition;
 			}
 		} else {
-			newSetpoint = getShaftEncoderPosition() + 0.01;
-			if (newSetpoint > maxPivotPosition) {
-				newSetpoint = maxPivotPosition; 
+			newSetpoint = getShaftEncoderPosition() + 0.03;
+			if (newSetpoint > highShotPosition) {
+				newSetpoint = highShotPosition; 
 			}
 		}
 
         targetShaftPosition = newSetpoint;
+
+        // TEMP
+        //SmartDashboard.putNumber("ShootPivotPwrCall", direction * .5);
+        //pivotMotor.set(ControlMode.PercentOutput, direction * .5);
         // System.out.println("Target Shaft Position:" + newSetpoint);
         
     }

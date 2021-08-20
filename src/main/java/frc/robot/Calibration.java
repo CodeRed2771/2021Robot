@@ -33,7 +33,7 @@ public class Calibration {
     // COMPETIION
 
     private final static double DT_A_ABS_ZERO_INITIAL = .463; // .277; // COMPEITION
-    private final static double DT_B_ABS_ZERO_INITIAL = .756; // .554;
+    private final static double DT_B_ABS_ZERO_INITIAL = .736; // .554;
     private final static double DT_C_ABS_ZERO_INITIAL = .434; // .042;
     private final static double DT_D_ABS_ZERO_INITIAL = .858; // .924;
 
@@ -107,11 +107,11 @@ public class Calibration {
     public final static double DT_ROT_PID_D = .000;
     public final static double DT_ROT_PID_IZONE = 18;
 
-	public final static int DT_MM_ACCEL = 300;
-	public final static int DT_MM_VELOCITY = 450;
+	public final static int DT_MM_ACCEL = 1000;
+	public final static int DT_MM_VELOCITY = 2000;
 	
 	// COMPETIION AND PRACTICE
-	public static final double DRIVE_DISTANCE_TICKS_PER_INCH = 42.66;  
+	public static final double DRIVE_DISTANCE_TICKS_PER_INCH = .39;  
 
     // TEST BOT2
     // public static final double DRIVE_DISTANCE_TICKS_PER_INCH = 32.900;
@@ -121,7 +121,7 @@ public class Calibration {
     public static final double AUTO_ROT_D = 0.1; // was 067
     public static final double AUTO_ROT_F = 0.0;
 
-    public static final double AUTO_DRIVE_P = .00015; 
+    public static final double AUTO_DRIVE_P = .00115; 
     public static final double AUTO_DRIVE_I = 0;
     public static final double AUTO_DRIVE_D = 0; // was 0
     public static final double AUTO_DRIVE_F = 0.000156;

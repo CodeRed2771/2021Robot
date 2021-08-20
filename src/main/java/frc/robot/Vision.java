@@ -67,6 +67,8 @@ public class Vision {
         // averageAdjustFactorPerInch = (adjustFactorTwo - adjustFactorOne) / 12;
         // finalAdjustedFactor = (averageAdjustFactorPerInch * (originalDistance - (distance * 12))) + adjustFactorOne;
         SmartDashboard.putNumber("FINAL ADJUSTED FACTOR", finalAdjustedFactor);
+        SmartDashboard.putNumber("VISION Angle Offset", getAngleOffset());
+        
         return finalAdjustedFactor * getAngleOffset();
     }
 

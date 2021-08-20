@@ -55,7 +55,7 @@ public class AutoAlign extends AutoBaseClass {
             case 2:
                 if (Math.abs(angleOffset) > 1) {
                     DriveAuto.turnDegrees(angleOffset, 1);
-                    setTimerAndAdvanceStep(1500);
+                    setTimerAndAdvanceStep(8500);
                 } else {
                     setStep(5);
                 }

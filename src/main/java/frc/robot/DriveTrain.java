@@ -381,10 +381,10 @@ public class DriveTrain {
         SmartDashboard.putNumber("Mod C Drive Enc", moduleC.getDriveEnc());
         SmartDashboard.putNumber("Mod D Drive Enc", moduleD.getDriveEnc());
 
-        // SmartDashboard.putNumber("Mod A Drive Setpt", moduleA.getCurrentDriveSetpoint());
-        // SmartDashboard.putNumber("Mod B Drive Setpt", moduleB.getCurrentDriveSetpoint());
-        // SmartDashboard.putNumber("Mod C Drive Setpt", moduleC.getCurrentDriveSetpoint());
-        // SmartDashboard.putNumber("Mod D Drive Setpt", moduleD.getCurrentDriveSetpoint());
+        SmartDashboard.putNumber("Mod A Drive Setpt", moduleA.getCurrentDriveSetpoint());
+        SmartDashboard.putNumber("Mod B Drive Setpt", moduleB.getCurrentDriveSetpoint());
+        SmartDashboard.putNumber("Mod C Drive Setpt", moduleC.getCurrentDriveSetpoint());
+        SmartDashboard.putNumber("Mod D Drive Setpt", moduleD.getCurrentDriveSetpoint());
     }
 
     public static void showTurnEncodersOnDash() {
@@ -436,10 +436,11 @@ public class DriveTrain {
         if (getInstance() == null)
             return;
 
-        double temp = (fwd * Math.cos(-RobotGyro.getGyroAngleInRad()))
-                + (strafe * Math.sin(-RobotGyro.getGyroAngleInRad()));
-        strafe = (-fwd * Math.sin(-RobotGyro.getGyroAngleInRad()))
-                + (strafe * Math.cos(-RobotGyro.getGyroAngleInRad()));
+        double temp = (fwd * Math.cos(RobotGyro.getGyroAngleInRad()))
+                + (strafe * Math.sin(RobotGyro.getGyroAngleInRad()));
+        strafe = (-fwd * Math.sin(RobotGyro.getGyroAngleInRad()))
+                + (strafe * Math.cos(
+                    RobotGyro.getGyroAngleInRad()));
         fwd = temp;
         humanDrive(fwd, strafe, rot);
     }

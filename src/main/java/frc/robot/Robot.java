@@ -168,9 +168,12 @@ public class Robot extends TimedRobot {
 		// 	Climber.setIdealClimberPositionToDropBellyPan();
 		// }
 		if (Math.abs(gamepad.shooterPivoterAdjuster()) > 0.1) {
-			ShooterPivoter.manualMove(gamepad.shooterPivoterAdjuster());	 // THIS FUNCTIONS NEED TO BE IMPROVISED
+			ShooterPivoter.manualMove(-gamepad.shooterPivoterAdjuster());	 // THIS FUNCTIONS NEED TO BE IMPROVISED
 																				// BASED ON WHAT WE ARE GIVEN
 		}
+		// TEMP FOR TESTING
+		//ShooterPivoter.manualMove(gamepad.shooterPivoterAdjuster());	 // THIS FUNCTIONS NEED TO BE IMPROVISED
+			
 		// if (Math.abs(gamepad.manualClimberAdjuster()) > 0.1) {
 		// 	Climber.adjustExtendedHook(gamepad.manualClimberAdjuster());
 		// }
